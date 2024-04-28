@@ -1,0 +1,9 @@
+{
+  "name": "RailwayBookingSystem",
+  "version": "1.0.0",
+  "description": "This is a Railway reservation system project made on MERN (MongoDB, Express.js, ReactJS, Node.js) stack.",
+  "main": "index.js",
+  "author": "1. Avishek Gorai, 2. Ayush Jalan, 3. Biswarup Naha, 4. Dinesh Kumar Singh",
+  "license": "MIT",
+  "private": true
+}

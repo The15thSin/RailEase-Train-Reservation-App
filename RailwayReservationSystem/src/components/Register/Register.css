@@ -1,0 +1,161 @@
+.Register {
+    background-color: #efefef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    perspective: 1000px;
+    /* Enable 3D perspective for hover effects */
+}
+
+/* Registration Heading */
+.Register-text-heading {
+    text-align: center;
+    width: 100%;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    color: black;
+    font-size: 24px;
+    text-shadow: 0 0 5px #ffffff3d;
+    padding: 3rem 0 3rem 0;
+    /* Text glow effect */
+    background-color: #252bc2;
+}
+
+/* Registration Form */
+.Register-form-container {
+    margin: 4rem auto;
+    width: 500px;
+    background-color: #ffffff;
+    /* Slightly darker background for form */
+    border-radius: 25px;
+    /* Rounded corners */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    /* Subtle shadow */
+    transform: translateY(0);
+    /* Initial position for hover effect */
+    transition: transform 0.3s ease-in-out;
+    /* Smooth hover animation */
+}
+
+.Register-form-container:hover {
+    transform: translateY(-5px);
+    /* Form lifts on hover */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.779);
+    /* More prominent shadow on hover */
+}
+
+.Register-form{
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* Input Fields */
+.RF-input {
+    padding: 15px;
+    margin: 0 2rem 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    /* Rounded corners */
+    font-size: 16px;
+    background-color: #e2e2e2;
+    /* Darker background for inputs */
+    color: #000000e6;
+    /* Lighter text color for inputs */
+    outline: none;
+    /* Remove default outline */
+}
+
+.RF-input::placeholder {
+    color: #0000004a;
+    /* Faded placeholder text */
+}
+
+.RF-input:focus {
+    /* Input background changes on focus */
+    color: #000000;
+    border: 1px solid rgba(0, 0, 0, 0.59);
+    /* Text becomes white on focus */
+}
+
+/* Label Styles */
+.rf-label {
+    display: block;
+    margin: 0 2rem 1rem 2rem;
+    font-size: 15px;
+    color: inherit;
+    /* Inherit text color from body */
+    text-shadow: 0 0 2px #00000032;
+    /* Subtle text glow effect */
+}
+
+/* Select Element */
+.RF-input[type="date"],
+.RF-input[type="number"],
+.RF-input select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-right: 10px;
+    /* Add some padding for the dropdown arrow */
+    /* background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlmZWlnPSI4IiB2aWV3Qm94PSIwIDAgOCA4Ij48cGF0aCBkPSJNNSAyLjUgMiAwLjVsMyAyLjVMMCA4di0zLjV6IiBmaWxsPSIjZWVlIiBmaWxsLX"); */
+    /* Custom dropdown arrow icon */
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+/* Submit Button */
+.Register-submit-button {
+    background-color: #252bc2;
+    /* Neon blue button color */
+    color: #ffffff;
+    /* Black text color */
+    padding: 15px 30px;
+    border: none;
+    margin: auto;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
+    /* Smooth hover animation */
+}
+
+.Register-submit-button:hover {
+    background-color: #141771;
+    /* Button color brightens on hover */
+}
+
+/* Status Message Styles */
+.Registration-notification {
+    position: sticky;
+    box-shadow: 0px 0px 10px #000,
+                0px 0px 50px #000;
+    /* Fixed positioning for sliding effect */
+    width: 80%;
+    left: 10%;
+    /* Adjust horizontal position as needed */
+    top: 40px;
+    text-align: center;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    opacity: 1;
+    /* Initial opacity for smooth fade-out */
+    transition: opacity 2s ease-in-out;
+    z-index: 100;
+    /* Transition for fade-out */
+}
+
+.r-success {
+    background-color: green;
+    color: #000;
+}
+
+.r-failed {
+    background-color: #ff4444;
+    color: #fff;
+}

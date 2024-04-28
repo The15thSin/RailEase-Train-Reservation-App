@@ -1,0 +1,68 @@
+.nav {
+    width: auto;
+    height: 4rem;
+    background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: x-large;
+
+    border-bottom: 1px solid rgb(134, 134, 134);
+    box-shadow: 0px 0px 5px black;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0rem 2rem;
+}
+
+.nav span{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.login-button {
+    background-color: rgb(37, 43, 194);
+    width: 7rem;
+    border: none;
+    color: whitesmoke;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.logout-button {
+    background-color: rgba(37, 42, 194, 0);
+    width: 8rem;
+    border: 2px solid #ff0000;
+    color: rgb(0, 0, 0);
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.register-button{
+    background-color: rgba(37, 42, 194, 0);
+    width: 9rem;
+    border: 2px solid #252bc2;
+    color: rgb(37, 43, 194);
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
