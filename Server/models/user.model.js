@@ -10,10 +10,10 @@ const UserSchema = new mongoose.Schema(
         phone: {type:Number, required: true},
         pincode: {type:Number}
     },
-    { collection : 'user-data' }
+    { collection : 'users' }
 )
 
-const model = mongoose.model('UserData', UserSchema)
+const User = mongoose.model('User', UserSchema)
 
-module.exports = model
+module.exports = User
 

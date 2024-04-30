@@ -1,16 +1,26 @@
+//packages and modules import
 const express = require("express")
-const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
-const authRoutes = require('./routes/authRoutes');
+const createRouter = require("./routes");
+require('dotenv').config()
 
+const app=express()
+const PORT=process.env.PORT || 3000
+
+//Middleware plugins
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect('mongodb://localhost:27017/RailwayReservationDB')
+//DB connection
+mongoose.connect(process.env.MONGO_URI)
 
-app.use('/api', authRoutes);
+//routes
+const router = createRouter();
+app.use("/api", router);
 
-app.listen(6969, ()=>{
-    console.log("Server is started on port 6969......")
+
+//server execution
+app.listen(PORT, ()=>{
+    console.log(`Server is started on http://localhost:${PORT}`)
 })

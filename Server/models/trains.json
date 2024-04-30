@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Rajdhani Express",
+    "destination": "New Delhi",
+    "startpoint": "Mumbai CST",
+    "startDate": "2024-05-10",
+    "reachDate": "2024-05-11",
+    "price": 1850.5
+  },
+  {
+    "name": "Duronto Express",
+    "destination": "Kolkata",
+    "startpoint": "Bangalore",
+    "startDate": "2024-05-15",
+    "reachDate": "2024-05-16",
+    "price": 1299.0
+  },
+  {
+    "name": "Shatabdi Express",
+    "destination": "Chennai Central",
+    "startpoint": "Hyderabad",
+    "startDate": "2024-05-20",
+    "reachDate": "2024-05-20",
+    "price": 987.25
+  },
+  {
+    "name": "Goa Express",
+    "destination": "Madgaon",
+    "startpoint": "Mumbai CSMT",
+    "startDate": "2024-05-25",
+    "reachDate": "2024-05-26",
+    "price": 750.0
+  },
+  {
+    "name": "Himalayan Queen",
+    "destination": "Jammu Tawi",
+    "startpoint": "Delhi Sarai Rohilla",
+    "startDate": "2024-05-30",
+    "reachDate": "2024-05-31",
+    "price": 1540.75
+  },
+  {
+    "name": "Uttaranchal Sampark Kranti",
+    "destination": "Dehradun",
+    "startpoint": "Lucknow",
+    "startDate": "2024-06-04",
+    "reachDate": "2024-06-05",
+    "price": 825.9
+  },
+  {
+    "name": "Intercity Express",
+    "destination": "Pune Junction",
+    "startpoint": "Ahmedabad",
+    "startDate": "2024-06-08",
+    "reachDate": "2024-06-08",
+    "price": 690.25
+  },
+  {
+    "name": "Guruvayur Express",
+    "destination": "Guruvayur",
+    "startpoint": "Chennai Central",
+    "startDate": "2024-06-12",
+    "reachDate": "2024-06-13",
+    "price": 1100.0
+  },
+  {
+    "name": "Howrah Rajdhani",
+    "destination": "Howrah Junction",
+    "startpoint": "New Delhi",
+    "startDate": "2024-06-17",
+    "reachDate": "2024-06-18",
+    "price": 1987.5
+  },
+  {
+    "name": "Dibrugarh Rajdhani",
+    "destination": "Dibrugarh",
+    "startpoint": "New Delhi",
+    "startDate": "2024-06-22",
+    "reachDate": "2024-06-23",
+    "price": 2200.0
+  },
+  {
+    "name": "Island Express",
+    "destination": "Port Blair",
+    "startpoint": "Chennai Central",
+    "startDate": "2024-07-05",
+    "reachDate": "2024-07-07",
+    "price": 1450.0
+  },
+  {
+    "name": "Kanchenjunga Express",
+    "destination": "Siliguri Junction",
+    "startpoint": "Dibrugarh",
+    "startDate": "2024-07-10",
+    "reachDate": "2024-07-11",
+    "price": 1075.25
+  },
+  {
+    "name": "Gujarat Express",
+    "destination": "Ahmedabad",
+    "startpoint": "Mumbai Central",
+    "startDate": "2024-07-15",
+    "reachDate": "2024-07-16",
+    "price": 890.1
+  },
+  {
+    "name": "Ajanta Express",
+    "destination": "Aurangabad",
+    "startpoint": "Hyderabad",
+    "startDate": "2024-07-20",
+    "reachDate": "2024-07-20",
+    "price": 575.0
+  },
+  {
+    "name": "Kanyakumari Express",
+    "destination": "Kanyakumari",
+    "startpoint": "Chennai Egmore",
+    "startDate": "2024-07-25",
+    "reachDate": "2024-07-26",
+    "price": 620.5
+  }
+]

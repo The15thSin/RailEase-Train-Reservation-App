@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-function authMiddleware(req, res, next) {
+function isAuthenticated(req, res, next) {
     // Check if authorization header exists
     const token = req.headers['x-access-token'];
     if (!token) {
@@ -18,4 +18,4 @@ function authMiddleware(req, res, next) {
     });
 }
 
-module.exports = authMiddleware;
+module.exports =isAuthenticated;
