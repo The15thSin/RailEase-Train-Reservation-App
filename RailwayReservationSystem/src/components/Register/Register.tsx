@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './Register.css'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Register() {
 
@@ -15,20 +15,20 @@ function Register() {
     const [response, setResponse] = useState(0)
 
     const navigate = useNavigate()
-  
+
     useEffect(() => {
         const messageElement = document.getElementById('registration-message');
-        if(messageElement){
+        if (messageElement) {
             const timeoutId = setTimeout(() => {
                 messageElement!.style.opacity = '0'; // Start fade-out animation
             }, 3000);
-            setTimeout(()=>{
-            if(response === -1){
-                window.location.reload();
-            }
-            else if(response === 1){
-                navigate('/login')
-            }
+            setTimeout(() => {
+                if (response === -1) {
+                    window.location.reload();
+                }
+                else if (response === 1) {
+                    navigate('/login')
+                }
             }, 6000);
             return () => clearTimeout(timeoutId);
         }
@@ -86,9 +86,12 @@ function Register() {
                     </>
             }
             <div className='Register-text-heading'>
-                <h2>
-                    Register Yourself
-                </h2>
+                Sign Up
+                <div className="go-back-reg">
+                    <Link to="/">
+                        <img width="35" height="35" src="https://img.icons8.com/ios/100/ffffff/circled-left-2.png" alt="circled-left-2" />
+                    </Link>
+                </div>
             </div>
             <form className="Register-form" onSubmit={RegisterUser}>
                 <label className='rf-label' htmlFor="name">Full Name :</label>
@@ -176,16 +179,16 @@ function Register() {
                     required
                 />
                 <label className='rf-label' htmlFor="Pincode">Pincode :</label>
-                <input 
+                <input
                     id="pincode"
                     className='RF-input'
                     type="number"
                     inputMode='numeric'
                     placeholder='Enter your pincode'
-                    value = {pincode}
-                    onChange={(e)=>{
+                    value={pincode}
+                    onChange={(e) => {
                         setPincode(parseInt(e.target.value))
-                    }} 
+                    }}
                 />
                 <button type="submit" className='Register-submit-button'>
                     Register

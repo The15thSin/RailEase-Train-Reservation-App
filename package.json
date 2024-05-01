@@ -5,5 +5,8 @@
   "main": "index.js",
   "author": "1. Avishek Gorai, 2. Ayush Jalan, 3. Biswarup Naha, 4. Dinesh Kumar Singh",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "react-select": "^5.8.0"
+  }
 }

@@ -6,7 +6,7 @@ const createRouter = require("./routes");
 require('dotenv').config()
 
 const app=express()
-const PORT=process.env.PORT || 3000
+const PORT=process.env.PORT
 
 //Middleware plugins
 app.use(cors())
@@ -18,7 +18,6 @@ mongoose.connect(process.env.MONGO_URI)
 //routes
 const router = createRouter();
 app.use("/api", router);
-
 
 //server execution
 app.listen(PORT, ()=>{

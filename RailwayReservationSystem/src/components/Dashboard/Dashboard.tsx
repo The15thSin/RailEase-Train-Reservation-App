@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom";
+import TrainSearch from "../TrainSearch/TrainSearch";
 
 function Dashboard() {
     
@@ -21,7 +22,7 @@ function Dashboard() {
             headers: {
                 'x-access-token' : token!,
             }
-        })        
+        })
     }
 
     useEffect( ()=>{
@@ -39,10 +40,15 @@ function Dashboard() {
     }, [navigate] );
 
     return (
+        <>
         <div>
             <h1>Login was succesful, this is your Dashboard</h1>
             <p>Thank you for visiting</p>
         </div>
+        <br />
+        <br />
+        <TrainSearch />
+        </>
     );
 }
 

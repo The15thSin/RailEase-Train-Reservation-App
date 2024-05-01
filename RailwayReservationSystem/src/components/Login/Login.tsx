@@ -39,7 +39,7 @@ function Login() {
         <div className="Login">
             <div className="login-container">
                 <div className="login-head">
-                    &nbsp;Sign In
+                    &nbsp;Log In
                     <div className="go-back">
                         <Link to = "/">
                             <img width="35" height="35" src="https://img.icons8.com/ios/100/ffffff/circled-left-2.png" alt="circled-left-2" />

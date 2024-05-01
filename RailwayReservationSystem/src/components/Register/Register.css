@@ -7,25 +7,31 @@
     min-height: 100vh;
     perspective: 1000px;
     /* Enable 3D perspective for hover effects */
+    font-family: 'Raleway', sans-serif;
 }
 
 /* Registration Heading */
 .Register-text-heading {
-    text-align: center;
+    background-color: #252bc2;
     width: 100%;
+    height: 8rem;
+    color: whitesmoke;
+    
+    font-size: 2rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
-    color: black;
-    font-size: 24px;
-    text-shadow: 0 0 5px #ffffff3d;
-    padding: 3rem 0 3rem 0;
-    /* Text glow effect */
-    background-color: #252bc2;
 }
 
 /* Registration Form */
 .Register-form-container {
-    margin: 4rem auto;
+    margin: 3rem auto;
     width: 500px;
     background-color: #ffffff;
     /* Slightly darker background for form */
@@ -37,6 +43,13 @@
     /* Initial position for hover effect */
     transition: transform 0.3s ease-in-out;
     /* Smooth hover animation */
+}
+
+.go-back-reg{
+    position: relative;
+    right: 280px;
+    top: -32px;
+    cursor: pointer;
 }
 
 .Register-form-container:hover {
@@ -116,7 +129,7 @@
     padding: 15px 30px;
     border: none;
     margin: auto;
-    border-radius: 10px;
+    border-radius: 27px;
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease-in-out;
@@ -124,7 +137,7 @@
 }
 
 .Register-submit-button:hover {
-    background-color: #141771;
+    background-color: #090b34;
     /* Button color brightens on hover */
 }
 

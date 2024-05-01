@@ -7,8 +7,6 @@ import Dashboard from './components/Dashboard/Dashboard'
 import Landing from './components/Landing/Landing'
 import Navbar from './components/Navbar/Navbar'
 
-
-
 function App() {
 
 

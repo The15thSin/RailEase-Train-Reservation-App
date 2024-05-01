@@ -1,0 +1,12 @@
+.TrainSearch{
+    background-color: bisque;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.letssee{
+    width: 300px;
+    margin: auto;
+}

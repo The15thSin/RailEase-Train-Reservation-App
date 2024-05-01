@@ -1,50 +1,41 @@
-const train = require("../models/trains");
+const TrainSchema = require("../models/train.model");
 
-/*
-method: GET
-route : api/train/
-description: returns all the trains
-*/
 const getTrains = async (req, res) => {
-  await train
-    .find({})
-    .sort({ startDate: -1 })
-    .then((trains) => {
-      return res.status(200).json({
-        trains,
-      });
-    })
-    .catch((err) => console.log(err));
-};
+  console.log(req.method)
+  console.log(req.body)
+  const { srcStation, destStation } = req.body;
+  try {
+    // Query logic to find trains
+    const trains = await TrainSchema.aggregate([
+      {
+        $match: {
+          "stations.stationCode": srcStation,
+          "stations.stationCode": destStation
+        },
+      },
+      {
+        $addFields: {
+          srcIndex: { $indexOfArray: ["$stations.stationCode", srcStation] },
+          destIndex: { $indexOfArray: ["$stations.stationCode", destStation] }
+        }
+      },
+      {
+        $match: {
+          $expr: { $lt: ["$srcIndex", "$destIndex"] }
+        }
+      }
+    ]);
+    if (trains.length === 0) {
+      res.status(500).json({ message: 'No trains found' });
+    } else {
+      res.json({ status: "ok", trains });
+    }
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: "Error fetching trains" })
+  }
+  // return (res.json({status: 'ok'}))
+  return res.status.json
+}
 
-/*
-method: GET
-route : api/train/:id
-description: returns a single train based on id
-*/
-const getTrain = async (req, res) => {
-  const { id } = req.params;
-
-  //validation
-  if (!id) return res.status(400).json({ msg: "Id not found" });
-
-  const outTrain = await train.findOne({
-    _id: id,
-  });
-
-  if (!outTrain) return res.json({ msg: "Train Does not exist" });
-
-  res.json({
-    id: outTrain._id,
-    name: outTrain.name,
-    users: outTrain.users,
-    destination: outTrain.destination,
-    startpoint: outTrain.startpoint,
-    startDate: outTrain.startDate,
-    reachDate: outTrain.reachDate,
-    price: outTrain.price,
-  });
-};
-
-
-module.exports = { getTrains, getTrain };
+module.exports = { getTrains };

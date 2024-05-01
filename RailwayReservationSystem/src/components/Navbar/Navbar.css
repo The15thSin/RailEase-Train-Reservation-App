@@ -36,12 +36,17 @@
     border-radius: 10px;
     padding: 0.5rem 1rem;
     cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+
+.login-button:hover{
+    background-color: #090b34;
 }
 
 .logout-button {
     background-color: rgba(37, 42, 194, 0);
     width: 8rem;
-    border: 2px solid #ff0000;
+    border: 2px solid #120000;
     color: rgb(0, 0, 0);
     font-size: 1.2rem;
     display: flex;
@@ -51,6 +56,11 @@
     padding: 0.5rem 1rem;
     font-weight: bold;
     cursor: pointer;
+    transition: all 0.7s ease-in-out;
+}
+
+.logout-button:hover{
+    border-color: #ff0000;
 }
 
 .register-button{
@@ -65,4 +75,10 @@
     border-radius: 10px;
     padding: 0.5rem 1rem;
     cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+
+.register-button:hover{
+    border-color: #090b34;
+    /* color: #090b34; */
 }

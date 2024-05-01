@@ -1,13 +1,6 @@
 const router = require("express").Router();
-const {
-  getTrains,
-  postTrain,
-  getTrain,
-  deleteTrain,
-} = require("../controllers/train");
+const { getTrains } = require("../controllers/train.controller");
 
-
-router.get("/", getTrains);
-router.get("/:id", getTrain);
+router.post('/trains', getTrains)
 
 module.exports = router;
