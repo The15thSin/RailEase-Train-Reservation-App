@@ -6,12 +6,19 @@ import Register from './components/Register/Register'
 import Dashboard from './components/Dashboard/Dashboard'
 import Landing from './components/Landing/Landing'
 import Navbar from './components/Navbar/Navbar'
+import TrainsList from './components/TrainsList/TrainsList'
+
+function DashboardRoutes() {
+  return (
+    <Routes>
+      <Route path="/" element={<Dashboard />} />
+      <Route path="train-results" element={<TrainsList />} />
+    </Routes>
+  );
+}
 
 function App() {
-
-
   return (
-
     <BrowserRouter>
       <Navbar />
       <Routes>
@@ -28,11 +35,7 @@ function App() {
             <Register />
           </>
         } />
-        <Route path='/dashboard' element={
-          <>
-            <Dashboard />
-          </>
-        } />
+        <Route path='/dashboard/*' element={<DashboardRoutes />}/>
       </Routes>
     </BrowserRouter>
   )

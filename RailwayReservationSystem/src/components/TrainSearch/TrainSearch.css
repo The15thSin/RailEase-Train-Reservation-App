@@ -1,12 +1,107 @@
-.TrainSearch{
-    background-color: bisque;
+/* Overall container styling */
+.TrainSearch {
+    margin: 2rem auto;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Material Design light shadow */
+    background-color: #fff;
+    width: 500px;
+    /* Light background */
+}
+
+/* Heading styling */
+.ts-head h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+/* Form styling */
+.ts-head form {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
     flex-direction: column;
 }
 
-.letssee{
-    width: 300px;
-    margin: auto;
+/* Input label styling */
+.ts-input-label {
+    flex: 1 0 20%;
+    /* Adjust label width as needed */
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    text-align: right;
+    color: #333;
+    /* Material Design text color */
+}
+
+/* Select component styling */
+.ts-select-stn {
+    flex: 1 0 40%;
+    /* Adjust select width as needed */
+    margin-bottom: 0.5rem;
+}
+
+.ts-select-stn .Select-control {
+    border: 1px solid #ccc;
+    /* Material Design border */
+    border-radius: 4px;
+    /* Material Design border radius */
+    background-color: #fff;
+    /* Light background for select */
+}
+
+.ts-select-stn .Select-menu-outer {
+    border: 1px solid #ccc;
+    /* Material Design border */
+    border-radius: 4px;
+    /* Material Design border radius */
+    background-color: #fff;
+    /* Light background for menu */
+}
+
+.ts-select-stn .Select-option:hover {
+    background-color: #e0e0e0;
+    /* Material Design hover effect */
+}
+
+/* Date input styling */
+.ts-input {
+    flex: 1 0 40%;
+    /* Adjust input width as needed */
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    /* Material Design border */
+    border-radius: 4px;
+    /* Material Design border radius */
+    background-color: #fff;
+    /* Light background for input */
+}
+
+/* Search button styling */
+.ts-form-submit {
+    flex: 1 0 20%;
+    /* Adjust button width as needed */
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    /* Material Design border radius */
+    background-color: #1976d2;
+    /* Blue accent color */
+    color: #fff;
+    /* White text */
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.ts-form-submit:hover {
+    background-color: #1565c0;
+    /* Darker blue on hover */
+}
+
+/* Form field container styling (optional) */
+.ts-form-fields {
+    margin-bottom: 1rem;
 }

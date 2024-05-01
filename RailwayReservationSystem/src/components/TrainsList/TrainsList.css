@@ -1,0 +1,80 @@
+/* Overall container styling */
+.TrainsList-container {
+    margin: 2rem auto;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    /* Adjust width as needed */
+}
+
+/* Heading styling */
+.tl-heading {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+/* Date and Day information styling */
+.tl-doj,
+.tl-day {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.tl-doj {
+    color: #333;
+}
+
+.tl-day {
+    color: #999;
+}
+
+/* Trains list styling */
+.tl-trains-info {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tl-train {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tl-train:nth-child(even) {
+    background-color: #f5f5f5;
+}
+
+/* Individual train information styling */
+.tl-train,
+.tl-other-train {
+    font-size: 0.9rem;
+}
+
+/* Other trains running section styling */
+h4 {
+    text-align: center;
+    margin: 1rem 0;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.tl-other-trains-info {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tl-other-train {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.tl-other-train:nth-child(even) {
+    background-color: #f5f5f5;
+}
