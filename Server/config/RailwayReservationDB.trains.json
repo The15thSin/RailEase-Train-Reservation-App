@@ -1,0 +1,78 @@
+[{
+  "_id": {
+    "$oid": "6632afbb4709ac77b734aadb"
+  },
+  "trainNo": 12345,
+  "trainName": "Rajdhani Express",
+  "stations": [
+    {
+      "serialNo": 1,
+      "stationCode": "DEL",
+      "arrTime": "10:00",
+      "deptTime": "10:15"
+    },
+    {
+      "serialNo": 2,
+      "stationCode": "KAN",
+      "arrTime": "20:00"
+    },
+    {
+      "serialNo": 3,
+      "stationCode": "HWH",
+      "arrTime": "09:00"
+    }
+  ],
+  "travelTime": "10H 00M",
+  "trainType": "Express",
+  "seats": {
+    "ac2": 50,
+    "ac3": 100,
+    "sl": 200
+  },
+  "daysOfOp": [
+    "Mon",
+    "Wed",
+    "Fri"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6632b7694709ac77b734aade"
+  },
+  "trainNo": 45678,
+  "trainName": "Gatimaan Express",
+  "stations": [
+    {
+      "serialNo": 1,
+      "stationCode": "DEL",
+      "arrTime": "06:00",
+      "deptTime": "06:10"
+    },
+    {
+      "serialNo": 2,
+      "stationCode": "AGC",
+      "arrTime": "08:00"
+    },
+    {
+      "serialNo": 3,
+      "stationCode": "HWH",
+      "arrTime": "18:00"
+    }
+  ],
+  "travelTime": "2H 00M",
+  "trainType": "Express",
+  "seats": {
+    "ac2": 30,
+    "ac3": 60,
+    "sl": 100
+  },
+  "daysOfOp": [
+    "Sun",
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat"
+  ]
+}]
