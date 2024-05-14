@@ -2,11 +2,12 @@ import './Landing.css'
 import rana from '../../assets/img/rana.png'
 
 function Landing() {
+    localStorage.clear();
     return (
         <div className="main">
             <div className="main-head">
                 <p className='main-head-p1'>Hello Everyone</p>
-                <p className='main-head-p2'>This is Malabar Railway e-Reservation System...</p>
+                <p className='main-head-p2'>This is RailEase : Making Railway Ticket Booking Easy...</p>
                 <img src={rana} alt="rana" />
                 <p className="rana-img-tag">Fastest Train Ticket Booking</p>
             </div>

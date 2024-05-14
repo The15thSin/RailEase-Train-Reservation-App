@@ -17,12 +17,6 @@ function Dashboard() {
     }
 
     async function showDashboard() {
-        const token = localStorage.getItem('token');
-        const res = await fetch('http://localhost:6969/api/showDashboard', {
-            headers: {
-                'x-access-token' : token!,
-            }
-        })
     }
 
     useEffect( ()=>{

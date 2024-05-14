@@ -7,12 +7,15 @@ import Dashboard from './components/Dashboard/Dashboard'
 import Landing from './components/Landing/Landing'
 import Navbar from './components/Navbar/Navbar'
 import TrainsList from './components/TrainsList/TrainsList'
+import BookingForm from './components/BookingForm/BookingForm'
+import Ticket from './components/Ticket/Ticket'
 
 function DashboardRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Dashboard />} />
       <Route path="train-results" element={<TrainsList />} />
+      <Route path="book-seat" element={<BookingForm />} />
     </Routes>
   );
 }
@@ -33,6 +36,11 @@ function App() {
         <Route path='/register' element={
           <>
             <Register />
+          </>
+        } />
+        <Route path='/ticket' element={
+          <>
+            <Ticket />
           </>
         } />
         <Route path='/dashboard/*' element={<DashboardRoutes />}/>

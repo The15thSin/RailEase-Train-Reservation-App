@@ -7,13 +7,17 @@ const ticketSchema = new mongoose.Schema(
       required: true,
       unique:true
     },
-    train: {
-      type: mongoose.Schema.Types.ObjectId,
+    trainNo: {
+      type: Number,
       ref: "Train",
       required: true,
     },
-    userId: {
-      type: mongoose.Schema.Types.ObjectId,
+    trainName: {
+      type: String,
+      required: true,
+    },
+    userID: {
+      type: String,
       ref: "User",
       required: true,
     },
@@ -29,7 +33,7 @@ const ticketSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
-    seatClass: {
+    coach: {
       type: String,
       enum: ["ac2", "ac3", "sl"],
       required: true,
@@ -46,7 +50,7 @@ const ticketSchema = new mongoose.Schema(
         },
         gender: {
           type: String,
-          enum: ["Male", "Female", "Other"],
+          enum: ["Male", "Female", "Gay"],
           required: true,
         },
       },

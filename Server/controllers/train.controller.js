@@ -1,4 +1,5 @@
 const TrainSchema = require("../models/train.model");
+const tickets = require("../models/tickets.model")
 
 const getTrains = async (req, res) => {
   console.log(req.method)
@@ -25,6 +26,7 @@ const getTrains = async (req, res) => {
         }
       }
     ]);
+
     if (trains.length === 0) {
       res.status(500).json({ message: 'No trains found' });
     } else {
@@ -39,3 +41,4 @@ const getTrains = async (req, res) => {
 }
 
 module.exports = { getTrains };
+

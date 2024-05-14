@@ -5,28 +5,158 @@
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    width: 60%;
+    width: 900px;
+    background-color: white;
     /* Adjust width as needed */
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    /* font-family: 'Raleway', sans-serif; */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Heading styling */
-.tl-heading {
+.tlh-heading {
     text-align: center;
     font-size: 1.2rem;
     font-weight: bold;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
 }
 
-/* Date and Day information styling */
-.tl-doj,
-.tl-day {
+.tlh-src-dest{
+    color: rgb(0, 151, 0);
+}
+
+.tlh-doj{
+    color: rgb(0, 151, 0);
+    padding-left: 1rem;
+}
+
+.train-no-name-dot{
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+
+.tl-doj{
     margin-bottom: 0.5rem;
     font-weight: bold;
+    color: #001561ab;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 0.2rem;
 }
 
-.tl-doj {
-    color: #333;
+.tl-stn-time{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    gap: 5rem;
+    /* background: #0000004c; */
 }
+
+.tl-stn-src,
+.tl-stn-dest{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(231, 255, 215);
+    border-radius: 8px;
+    padding: 1rem 3rem;
+}
+
+.tl-stn-src div,
+.tl-stn-dest div{
+    padding: 0.2rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.tl-trvl-time{
+    /* background-color: cyan; */
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #00000093;
+}
+
+.tl-seats{
+    border-top: 2px solid grey;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.tl-seat-blocks{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1.5rem;
+    margin: 5px;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px 0 rgba(0, 0, 0, 0.18);
+    background-color: #e1e8ff;
+}
+
+.tlsb-coach{
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    font-weight: 500;   
+}
+
+.tlsb-availability{
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 0.5rem;
+}
+
+.tlsb-book-btn{
+    padding: 0.5rem 2rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 2px solid green;
+    background-color: #9cff9e;
+    transition: all 0.3s ease-in-out;
+}
+
+.tlsb-book-btn:hover{
+    background-color: green;
+    color: white;
+}
+
+.tlsb-book-btn-disabled{
+    cursor: not-allowed;
+    background-color: #e1e8ff;
+    border: 2px solid grey;
+    color: #00000093;
+}
+
+.tlsb-book-btn-disabled:hover{
+    background-color: grey;
+    color: white;
+}
+
+
+
+
+/*-------------------------------------------------------*/
+
+/* Date and Day information styling */
 
 .tl-day {
     color: #999;

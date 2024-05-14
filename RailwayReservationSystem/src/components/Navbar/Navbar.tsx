@@ -28,7 +28,7 @@ function Navbar() {
                         <img width="55" height="55"
                             src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/128/252bc2/external-train-hotel-services-and-city-elements-flatart-icons-outline-flatarticons.png"
                             alt="external-train-hotel-services-and-city-elements-flatart-icons-outline-flatarticons" />
-                        <p>Malabar Railway Booking Portal</p>
+                        <p>RailEase</p>
                     </span>
                     <span>
                         {

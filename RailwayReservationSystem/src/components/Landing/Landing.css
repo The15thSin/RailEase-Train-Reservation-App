@@ -1,11 +1,11 @@
 .content {
-    min-height: 452px;
+    min-height: 460px;
     height: auto;
 }
 
 .main {
     background-image: url("../../assets/img/home_page_background@3x.png");
-    /* height: 452px; */
+    height: 500px;
     width: 100%;
     background-position: 0 100%;
     background-repeat: repeat-x;
@@ -126,4 +126,10 @@
 .mf-grid-item span p{
     font-size: 0.9rem;
     color: rgb(56, 56, 56);
+}
+
+.mf-grid-item span h4{
+    /* font-size: 0.9rem; */
+    /* color: rgb(56, 56, 56); */
+    text-align: start;
 }
