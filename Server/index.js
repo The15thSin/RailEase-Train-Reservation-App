@@ -11,6 +11,7 @@ const PORT=process.env.PORT
 //Middleware plugins
 app.use(cors())
 app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 
 //DB connection
 mongoose.connect(process.env.MONGO_URI)

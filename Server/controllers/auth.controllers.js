@@ -26,13 +26,14 @@ const loginHandler = async (req, res) => {
         name: user.name,
         email: user.email,
       },
-      "secretKey12345"
+      process.env.SECRET,
+      {expiresIn: '40m'}
     );
 
-    res.json({
+    res.status(200).json({
       status: "ok",
       message: "Log in successful",
-      token,
+      token
     });
   } else {
     res.json({

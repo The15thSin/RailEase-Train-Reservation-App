@@ -9,7 +9,7 @@ function Dashboard() {
     function decode(token: string) {
         try {
             const tokenValue = JSON.parse(window.atob(token.split(".")[1]));
-            console.log(tokenValue);
+            // console.log(tokenValue);
             return tokenValue;
         } catch (e) {
             return undefined;
