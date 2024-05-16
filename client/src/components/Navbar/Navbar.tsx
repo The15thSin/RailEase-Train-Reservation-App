@@ -31,7 +31,8 @@ function Navbar() {
         } else {
             setIsLoggedIn(false);
         }
-    }, []);
+        console.log("isLoggedIn:", isLoggedIn);
+    });
 
     function handleLogout() {
         setIsLoggedIn(false);

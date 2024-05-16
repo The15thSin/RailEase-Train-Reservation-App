@@ -1,0 +1,26 @@
+"filename", "language", "JavaScript", "TypeScript JSX", "CSS", "JSON", "comment", "blank", "total"
+"c:\Users\ayush\Documents\VS Code Files\SE Project (MERN)\RailwayReservationSystem\package.json", "JSON", 0, 0, 0, 2, 0, 0, 2
+"c:\Users\ayush\Documents\VS Code Files\SE Project (MERN)\RailwayReservationSystem\src\App.tsx", "TypeScript JSX", 0, 8, 0, 0, 0, 0, 8
+"c:\Users\ayush\Documents\VS Code Files\SE Project (MERN)\RailwayReservationSystem\src\components\BookingForm\BookingForm.css", "CSS", 0, 0, 150, 0, 24, 26, 200
+"c:\Users\ayush\Documents\VS Code Files\SE Project (MERN)\RailwayReservationSystem\src\components\BookingForm\BookingForm.tsx", "TypeScript JSX", 0, 200, 0, 0, 2, 26, 228
+"c:\Users\ayush\Documents\VS Code Files\SE Project (MERN)\RailwayReservationSystem\src\components\Dashboard\Dashboard.tsx", "TypeScript JSX", 0, -6, 0, 0, 0, 0, -6
+"c:\Users\ayush\Documents\VS Code Files\SE Project (MERN)\RailwayReservationSystem\src\components\Landing\Landing.css", "CSS", 0, 0, 4, 0, 1, 1, 6
+"c:\Users\ayush\Documents\VS Code Files\SE Project (MERN)\RailwayReservationSystem\src\components\Landing\Landing.tsx", "TypeScript JSX", 0, 1, 0, 0, 0, 0, 1
+"c:\Users\ayush\Documents\VS Code Files\SE Project (MERN)\RailwayReservationSystem\src\components\Ticket\Ticket.css", "CSS", 0, 0, 101, 0, 11, 18, 130
+"c:\Users\ayush\Documents\VS Code Files\SE Project (MERN)\RailwayReservationSystem\src\components\Ticket\Ticket.tsx", "TypeScript JSX", 0, 121, 0, 0, 1, 9, 131
+"c:\Users\ayush\Documents\VS Code Files\SE Project (MERN)\RailwayReservationSystem\src\components\TrainSearch\TrainSearch.tsx", "TypeScript JSX", 0, 29, 0, 0, 11, 6, 46
+"c:\Users\ayush\Documents\VS Code Files\SE Project (MERN)\RailwayReservationSystem\src\components\TrainsList\TrainsList.css", "CSS", 0, 0, 106, 0, 5, 19, 130
+"c:\Users\ayush\Documents\VS Code Files\SE Project (MERN)\RailwayReservationSystem\src\components\TrainsList\TrainsList.tsx", "TypeScript JSX", 0, 124, 0, 0, 0, 5, 129
+"c:\Users\ayush\Documents\VS Code Files\SE Project (MERN)\Server\config\RailwayReservationDB.trains.json", "JSON", 0, 0, 0, 78, 0, 0, 78
+"c:\Users\ayush\Documents\VS Code Files\SE Project (MERN)\Server\controllers\seatsAvail.controllers.js", "JavaScript", 45, 0, 0, 0, 0, 2, 47
+"c:\Users\ayush\Documents\VS Code Files\SE Project (MERN)\Server\controllers\stations.controllers.js", "JavaScript", 11, 0, 0, 0, 0, 2, 13
+"c:\Users\ayush\Documents\VS Code Files\SE Project (MERN)\Server\controllers\tickets.controllers.js", "JavaScript", 69, 0, 0, 0, 7, 7, 83
+"c:\Users\ayush\Documents\VS Code Files\SE Project (MERN)\Server\controllers\train.controller.js", "JavaScript", 1, 0, 0, 0, 0, 2, 3
+"c:\Users\ayush\Documents\VS Code Files\SE Project (MERN)\Server\models\reserve.model.js", "JavaScript", -13, 0, 0, 0, 0, -3, -16
+"c:\Users\ayush\Documents\VS Code Files\SE Project (MERN)\Server\models\tickets.model.js", "JavaScript", 71, 0, 0, 0, 0, 3, 74
+"c:\Users\ayush\Documents\VS Code Files\SE Project (MERN)\Server\routes\index.js", "JavaScript", 9, 0, 0, 0, 0, 1, 10
+"c:\Users\ayush\Documents\VS Code Files\SE Project (MERN)\Server\routes\reserve.routes.js", "JavaScript", 49, 0, 0, 0, 6, 11, 66
+"c:\Users\ayush\Documents\VS Code Files\SE Project (MERN)\Server\routes\seatsAvail.routes.js", "JavaScript", 4, 0, 0, 0, 0, 2, 6
+"c:\Users\ayush\Documents\VS Code Files\SE Project (MERN)\Server\routes\stations.routes.js", "JavaScript", 4, 0, 0, 0, 0, 2, 6
+"c:\Users\ayush\Documents\VS Code Files\SE Project (MERN)\Server\routes\tickets.routes.js", "JavaScript", 5, 0, 0, 0, 0, 2, 7
+"Total", "-", 255, 477, 361, 80, 68, 141, 1382
