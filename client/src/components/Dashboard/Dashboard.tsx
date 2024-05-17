@@ -16,20 +16,15 @@ function Dashboard() {
         }
     }
 
-    async function showDashboard() {
-    }
-
     useEffect( ()=>{
         const token = localStorage.getItem('token');
         if(!token){
-            navigate('login');
+            navigate('/login');
         }
         const user = decode(token!);
         if( user === undefined){
             localStorage.removeItem('token');
             navigate('/login');
-        } else {
-            showDashboard()
         }
     }, [navigate] );
 
