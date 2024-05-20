@@ -94,7 +94,7 @@
     border-radius: 27px;
 
     background-color: rgba(255, 255, 255, 0.263);
-    backdrop-filter: blur(4px)
+    backdrop-filter: blur(4px);
 }
 
 .mf-head{
@@ -132,4 +132,69 @@
     /* font-size: 0.9rem; */
     /* color: rgb(56, 56, 56); */
     text-align: start;
+}
+
+
+@media screen and (max-width: 600px) {
+    .main{
+        background-size: cover;
+        height:max-content;
+        
+        flex-direction: column;
+        padding: 55px;
+    }
+    .main-head{
+        /* border: 2px solid red; */
+        width: 100vw;
+    }
+    .main-head-p1{
+        font-size: 20px;
+    }
+    .main-head-p2{
+        font-size: 20px;
+    }
+    .main-head img{
+        width: 150px;
+        left: -8%;
+    }
+    .rana-img-tag{
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .main-features{
+        width: 110vw;
+        margin: .5rem;
+    }
+    .mf-head{
+        font-size: 15px;
+        padding: 1rem 0 0 1rem;
+    }
+
+    .mf-grid{
+        display: grid;
+        grid-template-columns: 50% 50%;    
+        padding: 5px;
+    }
+    .mf-grid-item{
+        padding: 3px;
+        margin: 3px;
+        flex-direction: column;
+        gap: 0rem;
+    }
+    .mf-grid-item span{
+        gap: 0px;
+        position: relative;
+    }
+    .mf-grid-item span img{
+        position: absolute;
+        top: 10px;
+        right: -78px;
+        width: 30px;
+        height: 30px;
+    }
+    .mf-grid-item span h4{
+        width: 8.75rem;
+        font-size: 14px;
+    }
 }

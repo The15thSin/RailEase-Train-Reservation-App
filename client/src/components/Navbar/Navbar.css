@@ -82,3 +82,26 @@
     border-color: #090b34;
     /* color: #090b34; */
 }
+
+
+@media screen and (max-width: 600px) {
+    .nav{
+        font-size: 21px;
+        width: 112.5vw;
+        position: fixed;
+    }
+    .nav span img{
+        width: 45px;
+        height: 45px;
+    }
+    .login-button{
+        width: 7rem;
+        font-size: 1.1rem;
+        padding: 0.3rem .8rem;
+    }
+    .register-button{
+        width: 8rem;
+        font-size: 1.1rem;
+        padding: 0.3rem .6rem;
+    }
+}
