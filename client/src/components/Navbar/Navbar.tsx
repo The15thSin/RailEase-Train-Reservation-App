@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './Navbar.css'
 import { Link, useNavigate } from 'react-router-dom'
+import { jwtDecode } from 'jwt-decode'
 
 
 function Navbar() {
@@ -9,10 +10,31 @@ function Navbar() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (localStorage.length !== 0) {
-            setIsLoggedIn(true);
+        const token = localStorage.getItem('token');
+        if (token) {
+            try {
+                const decodedToken = jwtDecode(token);
+                if (!decodedToken || !decodedToken.exp) {
+                    throw new Error('Invalid token');
+                }
+                const currentTime = Date.now() / 1000;
+                if (decodedToken.exp > currentTime) {
+                    setIsLoggedIn(true);
+                } else {
+                    // Token has expired
+                    localStorage.removeItem('token');
+                    setIsLoggedIn(false);
+                }
+            } catch (error) {
+                console.error('Token validation error:', error);
+                localStorage.removeItem('token');
+                setIsLoggedIn(false);
+            }
+        } else {
+            setIsLoggedIn(false);
         }
-    })
+        // console.log("isLoggedIn:", isLoggedIn);
+    });
 
     function handleLogout() {
         setIsLoggedIn(false);

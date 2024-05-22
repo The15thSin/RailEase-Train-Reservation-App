@@ -68,6 +68,14 @@
     height: 76px;
 }
 
+.db-manage-profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    /* overflow-x: hidden; */
+}
+
 .db-manage{
     display: flex;
     justify-content: center;
@@ -78,10 +86,11 @@
 
 .db-manage-option button{
     display: flex;
+    font-size: 1.1rem;
     /* justify-content: center; */
     align-items: center;
-    padding: 4px 10px;
-    width: 200px;
+    padding: 6px 10px;
+    width: 250px;
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
@@ -91,4 +100,5 @@
 
 .db-manage-option button:hover{
     background-color: #ffffff;
+    padding: 6px 0px 6px 20px;
 }

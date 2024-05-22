@@ -1,6 +1,8 @@
 .nav {
     width: auto;
+
     height: 4rem;
+    /* width:100%; */
     background: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
 
@@ -16,6 +18,7 @@
     align-items: center;
 
     padding: 0rem 2rem;
+    z-index: 100;
 }
 
 .nav span{
@@ -57,10 +60,13 @@
     font-weight: bold;
     cursor: pointer;
     transition: all 0.7s ease-in-out;
+    border-color: #ff0000;
 }
 
 .logout-button:hover{
-    border-color: #ff0000;
+    color: #ff0000;
+    background-color: #ffd7d7;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.292);
 }
 
 .register-button{

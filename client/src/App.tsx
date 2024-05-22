@@ -1,21 +1,34 @@
-import './App.css'
+import { Suspense, lazy } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
-import Login from './components/Login/Login'
-import Register from './components/Register/Register'
-import Dashboard from './components/Dashboard/Dashboard'
-import Landing from './components/Landing/Landing'
-import Navbar from './components/Navbar/Navbar'
-import TrainsList from './components/TrainsList/TrainsList'
-import BookingForm from './components/BookingForm/BookingForm'
-import Ticket from './components/Ticket/Ticket'
+const Login = lazy(() => import('./components/Login/Login')) 
+const Register = lazy(() => import('./components/Register/Register')) 
+const Dashboard = lazy(() => import('./components/Dashboard/Dashboard')) 
+const Landing = lazy(() => import('./components/Landing/Landing'))
+const Navbar = lazy(() => import('./components/Navbar/Navbar')) 
+const TrainsList = lazy(() => import('./components/TrainsList/TrainsList')) 
+const BookingForm = lazy(() => import('./components/BookingForm/BookingForm')) 
+const Ticket = lazy(() => import('./components/Ticket/Ticket')) 
+import Loading from './components/Loading/Loading'
+import './App.css'
 
 function DashboardRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Dashboard />} />
-      <Route path="train-results" element={<TrainsList />} />
-      <Route path="book-seat" element={<BookingForm />} />
+      <Route path="/" element={
+        <Suspense fallback={<Loading />}>
+          <Dashboard />
+        </Suspense>
+      } />
+      <Route path="train-results" element={
+        <Suspense fallback={<Loading />}>
+          <TrainsList />
+        </Suspense>
+      } />
+      <Route path="book-seat" element={
+        <Suspense fallback={<Loading />}>
+          <BookingForm />
+        </Suspense>
+      } />
     </Routes>
   );
 }
@@ -26,24 +39,31 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={
-          <Landing />
+          <Suspense fallback={<Loading />}>
+            <Landing />
+          </Suspense>
         } />
         <Route path='/login' element={
-          <>
+          <Suspense fallback={<Loading />}>
             <Login />
-          </>
+          </Suspense>
         } />
         <Route path='/register' element={
-          <>
+          <Suspense fallback={<Loading />}>
             <Register />
-          </>
+          </Suspense>
         } />
         <Route path='/ticket' element={
-          <>
+          <Suspense fallback={<Loading />}>
             <Ticket />
+          </Suspense>
+        } />
+        <Route path='/dashboard/*' element={
+          <>
+            <DashboardRoutes />
           </>
         } />
-        <Route path='/dashboard/*' element={<DashboardRoutes />}/>
+        {/* <Route path='/load' element={<Loading />}/> */}
       </Routes>
     </BrowserRouter>
   )

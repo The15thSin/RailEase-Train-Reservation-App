@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import './Login.css'
 import { Link, useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 function Login() {
 
@@ -36,7 +37,12 @@ function Login() {
     }
 
     return (
-        <div className="Login">
+        <motion.div className="Login"
+            initial={{ opacity: 0 , y: "-100%"}}
+            animate={{ opacity: 1 , y: "0"}}
+            exit={{ opacity: 0 , y: "-100%"}}
+            transition={{ duration: 0.4 }}
+        >
             <div className="login-container">
                 <div className="login-head">
                     &nbsp;Log In
@@ -81,7 +87,7 @@ function Login() {
                     <Link to="/register"> SIGN UP NOW</Link>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

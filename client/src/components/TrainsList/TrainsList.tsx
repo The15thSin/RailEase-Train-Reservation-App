@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import './TrainsList.css'
+import { motion } from 'framer-motion';
 
 function TrainsList() {
     const location = useLocation();
@@ -43,7 +44,12 @@ function TrainsList() {
     }
 
     return (
-        <>
+        <motion.div
+        initial={{ opacity: 0, y: "100%" }}
+        animate={{ opacity: 1, y: "0" }}
+        exit={{ opacity: 0, y: "100%" }}
+        transition={{ duration: 0.2 }}
+        >
             <div className="TrainsList-container">
                 <h2 className='tlh-heading'> Trains running from
                     <p className='tlh-src-dest'>{srcStation}</p>
@@ -174,7 +180,7 @@ function TrainsList() {
                     </div>
                 ))
             }
-        </>
+        </motion.div>
     );
 };
 

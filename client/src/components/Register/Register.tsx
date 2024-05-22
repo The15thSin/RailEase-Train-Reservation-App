@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './Register.css'
 import { Link, useNavigate } from 'react-router-dom'
+import { AnimatePresence, motion } from 'framer-motion'
 
 function Register() {
 
@@ -17,22 +18,23 @@ function Register() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        const messageElement = document.getElementById('registration-message');
-        if (messageElement) {
+        if (1) {
             const timeoutId = setTimeout(() => {
-                messageElement!.style.opacity = '0'; // Start fade-out animation
+                setResponse(0);
             }, 3000);
             setTimeout(() => {
                 if (response === -1) {
-                    window.location.reload();
+                    // window.location.reload();
                 }
                 else if (response === 1) {
                     navigate('/login')
                 }
-            }, 6000);
+            }, 5000);
             return () => clearTimeout(timeoutId);
         }
     }, [response]);
+
+    const [errMsg, setErrMsg] = useState(null);
 
     async function RegisterUser(event: { preventDefault: () => void }) {
         event.preventDefault()
@@ -61,142 +63,177 @@ function Register() {
         });
 
         const data = await response.json();
-        // console.log(data);
+        console.log(data);
 
         if (data.status === 'ok') {
             setResponse(1)
         } else {
+            setErrMsg(data.message)
             setResponse(-1)
         }
     }
 
+
     return (
-
-        <div className="Register-form-container">
-            {
-                (response === -1) ?
-                    <div id='registration-message' className='Registration-notification r-failed'>Registration Failed. Please try again later...</div>
-                    :
-                    <>
-                        {
-                            (response === 1) ?
-                                <div className='Registration-notification r-success' id='registration-message'>Registration Succesful</div> :
-                                <></>
-                        }
-                    </>
-            }
-            <div className='Register-text-heading'>
-                Sign Up
-                <div className="go-back-reg">
-                    <Link to="/">
-                        <img width="35" height="35" src="https://img.icons8.com/ios/100/ffffff/circled-left-2.png" alt="circled-left-2" />
-                    </Link>
-                </div>
-            </div>
-            <form className="Register-form" onSubmit={RegisterUser}>
-                <label className='rf-label' htmlFor="name">Full Name :</label>
-                <input
-                    id="name"
-                    className='RF-input'
-                    value={name}
-                    onChange={(e) => {
-                        setName(e.target.value)
-                    }}
-                    placeholder='Enter your full name'
-                    required
-                />
-                <label className='rf-label' htmlFor="email">Email :</label>
-                <input
-                    id="email"
-                    className='RF-input'
-                    value={email}
-                    onChange={(e) => {
-                        setEmail(e.target.value)
-                    }}
-                    type='email'
-                    placeholder='Enter your Email address'
-                    required
-                />
-                <label className='rf-label' htmlFor="Password">Password :</label>
-                <input
-                    id="Password"
-                    className='RF-input'
-                    value={password}
-                    onChange={(e) => {
-                        setPassword(e.target.value)
-                    }}
-                    type='password'
-                    placeholder='Password (Min 8 chars)'
-                    required
-                />
-                <label className='rf-label' htmlFor="Re-password">Re-enter Password :</label>
-                <input
-                    id="Re-password"
-                    className='RF-input'
-                    value={password2}
-                    onChange={(e) => {
-                        setPassword2(e.target.value)
-                    }}
-                    type='password'
-                    placeholder='Re-enter Password'
-                    required
-                />
-                <label className='rf-label' htmlFor="dob">Date of Birth :</label>
-                <input
-                    id="dob"
-                    className='RF-input'
-                    type="date"
-                    value={dob}
-                    onChange={(e) => {
-                        setDOB(e.target.value)
-                    }}
-                    placeholder='Enter your Date of Birth'
-                    required
-                />
-                <label className='rf-label' htmlFor="sex">Gender :</label>
-                <select
-                    className='RF-input'
-                    name="sex"
-                    id="sex"
-                    onChange={(e) => setSex(e.target.value)}
-                    required>
-                    <option selected disabled> Select your Gender</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Gay">Others</option>
-                </select>
-                <label className='rf-label' htmlFor="Number">Phone Number :</label>
-                <input
-                    id="Number"
-                    className='RF-input'
-                    type="number"
-                    inputMode="numeric"
-                    value={phone}
-                    onChange={(e) => {
-                        setPhone(parseInt(e.target.value))
-                    }}
-                    placeholder='Enter your Phone Number'
-                    required
-                />
-                <label className='rf-label' htmlFor="Pincode">Pincode :</label>
-                <input
-                    id="pincode"
-                    className='RF-input'
-                    type="number"
-                    inputMode='numeric'
-                    placeholder='Enter your pincode'
-                    value={pincode}
-                    onChange={(e) => {
-                        setPincode(parseInt(e.target.value))
-                    }}
-                />
-                <button type="submit" className='Register-submit-button'>
+        <motion.div 
+            initial={{ opacity: 0, y: "100%" }}
+            animate={{ opacity: 1, y: "0" }}
+            exit={{ opacity: 0, y: "100%" }}
+            transition={{ duration: 0.4 }}
+        >
+            <div className="Register-form-container">
+                <div className='Register-text-heading'>
                     Register
-                </button>
+                    <div className="go-back-reg">
+                        <Link to="/">
+                            <img width="35" height="35" src="https://img.icons8.com/ios/100/ffffff/circled-left-2.png" alt="circled-left-2" />
+                        </Link>
+                    </div>
+                </div>
+                <form className="Register-form" onSubmit={RegisterUser}>
+                    <label className='rf-label' htmlFor="name">Full Name :</label>
+                    <input
+                        id="name"
+                        className='RF-input'
+                        value={name}
+                        onChange={(e) => {
+                            setName(e.target.value)
+                        }}
+                        placeholder='Enter your full name'
+                        required
+                    />
+                    <label className='rf-label' htmlFor="email">Email :</label>
+                    <input
+                        id="email"
+                        className='RF-input'
+                        value={email}
+                        onChange={(e) => {
+                            setEmail(e.target.value)
+                        }}
+                        type='email'
+                        placeholder='Enter your Email address'
+                        required
+                    />
+                    <label className='rf-label' htmlFor="Password">Password :</label>
+                    <input
+                        id="Password"
+                        className='RF-input'
+                        value={password}
+                        onChange={(e) => {
+                            setPassword(e.target.value)
+                        }}
+                        type='password'
+                        placeholder='Password (Min 8 chars)'
+                        required
+                    />
+                    <label className='rf-label' htmlFor="Re-password">Re-enter Password :</label>
+                    <input
+                        id="Re-password"
+                        className='RF-input'
+                        value={password2}
+                        onChange={(e) => {
+                            setPassword2(e.target.value)
+                        }}
+                        type='password'
+                        placeholder='Re-enter Password'
+                        required
+                    />
+                    <label className='rf-label' htmlFor="dob">Date of Birth :</label>
+                    <input
+                        id="dob"
+                        className='RF-input'
+                        type="date"
+                        value={dob}
+                        onChange={(e) => {
+                            setDOB(e.target.value)
+                        }}
+                        placeholder='Enter your Date of Birth'
+                        required
+                    />
+                    <label className='rf-label' htmlFor="sex">Gender :</label>
+                    <select
+                        className='RF-input'
+                        name="sex"
+                        id="sex"
+                        onChange={(e) => setSex(e.target.value)}
+                        required>
+                        <option defaultChecked> Select your Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Gay">Others</option>
+                    </select>
+                    <label className='rf-label' htmlFor="Number">Phone Number :</label>
+                    <input
+                        id="Number"
+                        className='RF-input'
+                        inputMode="numeric"
+                        value={(phone===0)?undefined: phone}
+                        onChange={(e) => {
+                            setPhone(parseInt(e.target.value))
+                        }}
+                        placeholder='Enter your Phone Number'
+                        required
+                    />
+                    <label className='rf-label' htmlFor="Pincode">Pincode :</label>
+                    <input
+                        id="pincode"
+                        className='RF-input'
+                        type="number"
+                        inputMode='numeric'
+                        placeholder='Enter your pincode'
+                        value={(pincode===0) ? undefined : pincode}
+                        onChange={(e) => {
+                            setPincode(parseInt(e.target.value))
+                        }}
+                    />
+                    <button type="submit" className='Register-submit-button'>
+                        Register
+                    </button>
 
-            </form>
+                </form>
 
-        </div>
+            </div>
+            <AnimatePresence mode="wait">
+                {
+                    (response === -1) &&
+                    (
+                        <motion.div
+                            initial={{ opacity: 0, x: "100%" }}
+                            animate={{ opacity: 1, x: "0" }}
+                            exit={{ opacity: 0, x: "100%" }}
+                            transition={{ duration: 0.4 }}
+                            id='registration-message' className='Registration-notification r-failed'>
+                                <span>
+                                    <img width="24" height="24" src="https://img.icons8.com/ios-filled/50/ff4444/cancel.png" alt="cancel" />
+                                    <p>
+                                        Oops! Registration Failed. Please try again later...
+                                    </p>
+                                </span>
+                            <p className='err-msg'>"{errMsg}"</p>
+                        </motion.div>
+                    )
+                    ||
+                    (response === 1) &&
+                    (
+                        <motion.div
+                            initial={{ opacity: 0, x: "100%" }}
+                            animate={{ opacity: 1, x: "0" }}
+                            exit={{ opacity: 0, x: "100%" }}
+                            transition={{ duration: 0.4 }}
+                            className='Registration-notification r-success'
+                            id='registration-message'
+                        >
+                            <span>
+                                <img width="24" height="24" src="https://img.icons8.com/ios-glyphs/30/008000/task-completed.png" alt="task-completed" />
+                                <p>
+                                    Registration Successful. Redirecting to Login page...
+                                </p>
+                            </span>
+                        </motion.div>
+                    )
+                }
+            </AnimatePresence>
+        </motion.div>
     )
 }
 

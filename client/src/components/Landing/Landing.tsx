@@ -1,10 +1,16 @@
 import './Landing.css'
 import rana from '../../assets/img/rana.png'
+import { motion } from 'framer-motion';
 
 function Landing() {
     localStorage.clear();
     return (
-        <div className="main">
+        <motion.div className="main"
+            initial={{ opacity: 0 , y: "-100%"}}
+            animate={{ opacity: 1 , y: "0"}}
+            exit={{ opacity: 0 , y: "-100%"}}
+            transition={{ duration: 0.4, ease:"easeInOut" }}
+        >
             <div className="main-head">
                 <p className='main-head-p1'>Hello Everyone</p>
                 <p className='main-head-p2'>This is RailEase : Making Railway Ticket Booking Easy...</p>
@@ -72,7 +78,7 @@ function Landing() {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

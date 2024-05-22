@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './TrainSearch.css'
 import Select from 'react-select';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 function TrainSearch() {
 
@@ -100,7 +101,12 @@ function TrainSearch() {
     }
 
     return (
-        <div className='TrainSearch'>
+        <motion.div 
+            initial={{ opacity: 0, y: "100%" }}
+            animate={{ opacity: 1, y: "0" }}
+            exit={{ opacity: 0, y: "100%" }}
+            transition={{ duration: 0.2 }}
+            className='TrainSearch'>
             <div className='ts-head'>
                 <h2>Search Trains</h2>
                 <form className='ts-form' onSubmit={findTrains}>
@@ -120,7 +126,7 @@ function TrainSearch() {
                     </div>
 
                     <div className='ts-form-fields'>
-                        <label className="ts-input-label" htmlFor="dest">Enter Source Station : </label>
+                        <label className="ts-input-label" htmlFor="dest">Enter Destination Station : </label>
                         <Select
                             className='ts-select-stn ts-input'
                             id="dest"
@@ -156,7 +162,7 @@ function TrainSearch() {
 
                 </form>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

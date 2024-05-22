@@ -109,7 +109,13 @@ function BookingForm() {
     };
 
     return (
-        <div className='booking-form-container'>
+        <motion.div
+            initial={{ opacity: 0, y: "100%" }}
+            animate={{ opacity: 1, y: "0" }}
+            exit={{ opacity: 0, y: "100%" }}
+            transition={{ duration: 0.2 }}
+            className='booking-form-container'
+        >
             <div className="booking-form">
                 <h2>Booking Form</h2>
 
@@ -220,7 +226,7 @@ function BookingForm() {
             <button key="6" type="submit" className="submit-btn" onClick={handleSubmit}>
                 Submit Booking
             </button>
-        </div>
+        </motion.div>
     );
 }
 

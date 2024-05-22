@@ -59,7 +59,7 @@ const registerHandler = async (req, res) => {
     console.log("New user created", newUser);
     res.json({ status: "ok" });
   } catch (err) {
-    res.json({ status: "error", error: { err } });
+    res.json({ status: "error", message: "User already exists. Please login. In case you forgot your password, please reset it" });
   }
 };
 

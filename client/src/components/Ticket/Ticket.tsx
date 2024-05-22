@@ -2,14 +2,15 @@ import { useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom';
 import ReactToPrint from 'react-to-print';
 import './Ticket.css'
+import { motion } from 'framer-motion';
 
 function Ticket() {
     const tktRef = useRef<HTMLDivElement | null>(null);
 
     const location = useLocation();
-    // const pnr = location.state.pnr;
-    const pnr = 11037490
-    console.log(pnr)
+    const pnr = location.state.pnr;
+    // const pnr = 11037490
+    // console.log(pnr)
 
     const [ticket, setTicket] = useState({
         pnr: "",
@@ -48,10 +49,13 @@ function Ticket() {
         fetchData();
     }, []);
 
-    console.log(ticket)
-
     return (
-        <div className='tkt-wrapper'>
+        <motion.div 
+            initial={{ opacity: 0, y: "100%" }}
+            animate={{ opacity: 1, y: "0" }}
+            exit={{ opacity: 0, y: "100%" }}
+            transition={{ duration: 0.2 }}
+            className='tkt-wrapper'>
             <div ref={tktRef} className='tkt-container'>
                 <h2>
                     Ticket
@@ -117,13 +121,13 @@ function Ticket() {
 
             <ReactToPrint trigger={() => (
                 <button className='print-tkt'>
-                    Print 
-                    <img width="18" height="18" src="https://img.icons8.com/material-rounded/24/ffffff/print.png" alt="print"/>
+                    Print
+                    <img width="18" height="18" src="https://img.icons8.com/material-rounded/24/ffffff/print.png" alt="print" />
                 </button>
             )}
                 content={() => tktRef.current ? tktRef.current : null}
             />
-        </div>
+        </motion.div>
     )
 }
 
