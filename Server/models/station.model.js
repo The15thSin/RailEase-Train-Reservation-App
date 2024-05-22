@@ -4,8 +4,8 @@ const stationSchema = new mongoose.Schema({
     stationCode: { type: String, required: true },
     stationName: { type: String, required: true },
 },
-{ collection: "stations" });
+{ collection: "station" });
 
-const Stations = mongoose.model("Stations", stationSchema)
+const Station = mongoose.model("Station", stationSchema)
 
-module.exports = Stations
+module.exports = Station

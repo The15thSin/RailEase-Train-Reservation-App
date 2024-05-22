@@ -3,12 +3,25 @@ import './Register.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 
+interface PasswordComplexity {
+    type: string;
+    regex: RegExp;
+}
+
+const complexityRequirements: PasswordComplexity[] = [
+    { type: "lowercase", regex: /[a-z]/ },
+    { type: "uppercase", regex: /[A-Z]/ },
+    { type: "number", regex: /[0-9]/ },
+    { type: "special", regex: /[!@#$%^&*()_+\-=\[\]{};':",./<>?|\\]/ },
+];
+
 function Register() {
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [password2, setPassword2] = useState('')
+    const [feedback, setFeedback] = useState('')
     const [sex, setSex] = useState('')
     const [dob, setDOB] = useState('')
     const [phone, setPhone] = useState(0)
@@ -35,6 +48,24 @@ function Register() {
     }, [response]);
 
     const [errMsg, setErrMsg] = useState(null);
+
+    const checkPasswordComplexity = (value: string) => {
+        const meetsRequirements = complexityRequirements.every(
+            (requirement) => requirement.regex.test(value)
+        );
+
+        if (value.length < 8) {
+            setFeedback('*Password must be at least 8 characters long.');
+        } else if (!meetsRequirements) {
+            const missingTypes = complexityRequirements.filter(
+                (requirement) => !requirement.regex.test(value)
+            ).map((requirement) => requirement.type);
+            const missingTypesList = missingTypes.join(', ');
+            setFeedback(`*Password must include at least one ${missingTypesList}.`);
+        } else {
+            setFeedback(''); // Clear feedback if password meets complexity
+        }
+    };
 
     async function RegisterUser(event: { preventDefault: () => void }) {
         event.preventDefault()
@@ -75,7 +106,7 @@ function Register() {
 
 
     return (
-        <motion.div 
+        <motion.div
             initial={{ opacity: 0, y: "100%" }}
             animate={{ opacity: 1, y: "0" }}
             exit={{ opacity: 0, y: "100%" }}
@@ -117,19 +148,23 @@ function Register() {
                     <label className='rf-label' htmlFor="Password">Password :</label>
                     <input
                         id="Password"
-                        className='RF-input'
+                        className={feedback==='' ? 'RF-input' : 'RF-input pswrd-invalid' }
                         value={password}
                         onChange={(e) => {
                             setPassword(e.target.value)
+                            checkPasswordComplexity(e.target.value);
                         }}
                         type='password'
                         placeholder='Password (Min 8 chars)'
                         required
                     />
+                    <p className="password-complexity-feedback" aria-live="polite">
+                        {feedback}
+                    </p>
                     <label className='rf-label' htmlFor="Re-password">Re-enter Password :</label>
                     <input
                         id="Re-password"
-                        className='RF-input'
+                        className={feedback==='' ? 'RF-input' : 'RF-input pswrd-invalid' }
                         value={password2}
                         onChange={(e) => {
                             setPassword2(e.target.value)
@@ -167,7 +202,7 @@ function Register() {
                         id="Number"
                         className='RF-input'
                         inputMode="numeric"
-                        value={(phone===0)?undefined: phone}
+                        value={(phone === 0) ? undefined : phone}
                         onChange={(e) => {
                             setPhone(parseInt(e.target.value))
                         }}
@@ -181,7 +216,7 @@ function Register() {
                         type="number"
                         inputMode='numeric'
                         placeholder='Enter your pincode'
-                        value={(pincode===0) ? undefined : pincode}
+                        value={(pincode === 0) ? undefined : pincode}
                         onChange={(e) => {
                             setPincode(parseInt(e.target.value))
                         }}
@@ -203,12 +238,12 @@ function Register() {
                             exit={{ opacity: 0, x: "100%" }}
                             transition={{ duration: 0.4 }}
                             id='registration-message' className='Registration-notification r-failed'>
-                                <span>
-                                    <img width="24" height="24" src="https://img.icons8.com/ios-filled/50/ff4444/cancel.png" alt="cancel" />
-                                    <p>
-                                        Oops! Registration Failed. Please try again later...
-                                    </p>
-                                </span>
+                            <span>
+                                <img width="24" height="24" src="https://img.icons8.com/ios-filled/50/ff4444/cancel.png" alt="cancel" />
+                                <p>
+                                    Oops! Registration Failed. Please try again later...
+                                </p>
+                            </span>
                             <p className='err-msg'>"{errMsg}"</p>
                         </motion.div>
                     )

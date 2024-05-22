@@ -7,10 +7,11 @@ const TrainSchema = new mongoose.Schema(
     stations: [{
                 serialNo: { type: Number, required: true },
                 stationCode: { type: String, required: true },
-                arrTime: { type: String, required: true},
-                deptTime: { type: String }
+                duration: { type: Number, required: true},
+                distance: { type: Number },
+                halt: { type: Number }
               }],
-    travelTime: { type: String, required: true},
+    startTime: { type: String, required: true },
     trainType: { type: String, required: true},
     seats: { type: 
             {

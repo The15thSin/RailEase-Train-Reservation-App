@@ -107,3 +107,10 @@
 .ts-form-fields {
     margin-bottom: 1rem;
 }
+
+.No-trains-found{
+    /* background-color: red; */
+    text-align: center;
+    padding-top: 1rem;
+    color: red;
+}

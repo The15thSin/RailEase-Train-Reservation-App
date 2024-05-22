@@ -7,9 +7,6 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     width: 900px;
     background-color: white;
-    /* Adjust width as needed */
-    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
-    /* font-family: 'Raleway', sans-serif; */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -31,21 +28,43 @@
 
 .tlh-doj{
     color: rgb(0, 151, 0);
-    padding-left: 1rem;
+    /* padding-left: 1rem; */
 }
 
 .train-no-name-dot{
     font-weight: bold;
     font-size: 1.1rem;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    padding: 0 1rem;
+    padding: 10px 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    /* background-color: yellow; */
+}
+
+.train-type{
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 2px solid green;
+    background-color: #9cff9e;
+    color: green;
+    margin: 0 0.5rem;
+}
+
+.view-train-details{
+    cursor: pointer;
+    font-size: 0.8rem;
+    padding: 5px 0px;
+    color: #002ac2;
+    background-color: white;
+    border: none;
 }
 
 .tl-doj{
-    margin-bottom: 0.5rem;
+    /* margin-bottom: 0.5rem; */
     font-weight: bold;
-    color: #001561ab;
+    color: #002ac2;
     display: flex;
     justify-content: center;
     align-items: baseline;
@@ -151,13 +170,6 @@
     color: white;
 }
 
-
-
-
-/*-------------------------------------------------------*/
-
-/* Date and Day information styling */
-
 .tl-day {
     color: #999;
 }
@@ -208,3 +220,27 @@ h4 {
 .tl-other-train:nth-child(even) {
     background-color: #f5f5f5;
 }
+
+.other-days {
+    margin: 2rem auto;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    width: 900px;
+    background-color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.other-days h2{
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+

@@ -9,22 +9,11 @@ function TrainSearch() {
     const [srcStation, setSrcStation] = useState('');
     const [destStation, setDestStation] = useState('');
     const [doj, setDoj] = useState('');
-    const [trains, setTrains] = useState([]);
+    const [trainsFound, setTrainsFound] = useState(-1);
 
     const navigate = useNavigate();
 
     const today = new Date().toISOString().slice(0, 10);
-
-    // const stations = [
-    //     { value: 'DEL', label: 'DEL', },
-    //     { value: 'KAN', label: 'KAN', },
-    //     { value: 'HWH', label: 'HWH', },
-    //     { value: 'd', label: 'd', },
-    //     { value: 'e', label: 'e', },
-    //     { value: 'f', label: 'f', },
-    //     { value: 'g', label: 'g', },
-    //     { value: 'h', label: 'h', }
-    // ]
 
     const [stationsList, setStationsList] = useState([]);
     async function getStations() {
@@ -41,12 +30,10 @@ function TrainSearch() {
         fetchData();
     }, []);
 
-    const stations = stationsList.map((station: {stationCode: string, stationName: string}) => ({
+    const stations = stationsList.map((station: { stationCode: string, stationName: string }) => ({
         value: station.stationCode,
         label: `${station.stationName} - ${station.stationCode}`,
-      }));
-    // console.log(stations)
-
+    }));
 
     async function getAvail(trains: string | any[]) {
         let seatAvl = [];
@@ -66,8 +53,7 @@ function TrainSearch() {
             seatAvl.push(seat.seatInfo);
             console.log("Seat Response:", trains[i].trainNo, seat);
         }
-        const seatData = seatAvl;
-        return seatData;
+        return seatAvl
     }
 
     async function findTrains(event: { preventDefault: () => void }) {
@@ -84,24 +70,22 @@ function TrainSearch() {
             })
         })
 
-        console.log(JSON.stringify({ srcStation, destStation }))
+        // console.log(JSON.stringify({ srcStation, destStation }))
 
         const data = await response.json()
 
-        const seatData = await getAvail(data.trains);
-
+        let seatData = {};
         if (data.status === 'ok') {
-            await setTrains(data.trains);
-            // console.log(trains)
+            seatData = await getAvail(data.trains);
+            await setTrainsFound(data.trains.length);
             await navigate('/dashboard/train-results', { state: { trains: data.trains, doj: doj, srcStation: srcStation, destStation: destStation, seatData: seatData } });
         } else {
-            alert('No trains found')
-            setTrains([]);
+            setTrainsFound(0);
         }
     }
 
     return (
-        <motion.div 
+        <motion.div
             initial={{ opacity: 0, y: "100%" }}
             animate={{ opacity: 1, y: "0" }}
             exit={{ opacity: 0, y: "100%" }}
@@ -120,6 +104,7 @@ function TrainSearch() {
                             onChange={(newValue) => {
                                 if (newValue) { // Check if newValue is not null before accessing its properties
                                     setSrcStation(newValue.value);
+                                    setTrainsFound(-1);
                                 }
                             }}
                         />
@@ -135,6 +120,7 @@ function TrainSearch() {
                             onChange={(newValue) => {
                                 if (newValue) { // Check if newValue is not null before accessing its properties
                                     setDestStation(newValue.value);
+                                    setTrainsFound(-1);
                                 }
                             }}
                         />
@@ -148,7 +134,8 @@ function TrainSearch() {
                             type="date"
                             value={doj}
                             onChange={(e) => {
-                                setDoj(e.target.value)
+                                setDoj(e.target.value);
+                                setTrainsFound(-1);
                             }}
                             placeholder='Enter Date of Journey'
                             min={today}
@@ -159,6 +146,18 @@ function TrainSearch() {
                     <button className='ts-form-submit' type='submit'>
                         Search
                     </button>
+
+                    {
+                        trainsFound === 0 ?
+                            <motion.div
+                                initial={{ opacity: 0, y: "-100px", height: "0px" }}
+                                animate={{ opacity: 1, y: "0", height: "auto" }}
+                                >
+                                <p className='No-trains-found'>No Trains Found</p>
+                            </motion.div> :
+                            <>
+                            </>
+                    }
 
                 </form>
             </div>

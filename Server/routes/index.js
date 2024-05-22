@@ -5,7 +5,7 @@ const trainRoutes = require('../routes/train.routes')
 const reserveRoutes = require('../routes/reserve.routes')
 const ticketRoutes = require('../routes/tickets.routes')
 const seatsAvail = require('../routes/seatsAvail.routes')
-const stationsRoutes = require('../routes/stations.routes')
+const stationsRoutes = require('../routes/station.routes')
 
 const createRouter = () => {
   const router = express.Router();

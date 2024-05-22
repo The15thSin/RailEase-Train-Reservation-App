@@ -5,13 +5,16 @@ const getTrains = async (req, res) => {
   console.log(req.method)
   console.log(req.body)
   const { srcStation, destStation } = req.body;
+  console.log(srcStation)
+  console.log(destStation)
   try {
-    // Query logic to find trains
     const trains = await TrainSchema.aggregate([
       {
         $match: {
-          "stations.stationCode": srcStation,
-          "stations.stationCode": destStation
+          "stations.stationCode": { $in: [srcStation] },
+        },
+        $match: {
+          "stations.stationCode": { $in: [destStation] },
         },
       },
       {
@@ -22,13 +25,13 @@ const getTrains = async (req, res) => {
       },
       {
         $match: {
-          $expr: { $lt: ["$srcIndex", "$destIndex"] }
+          $expr: { $and: [{ $ne: ["$srcIndex", -1] }, { $ne: ["$destIndex", -1]  }, {$lt: ["$srcIndex", "$destIndex"]}] }
         }
       }
     ]);
 
     if (trains.length === 0) {
-      res.status(500).json({ message: 'No trains found' });
+      res.status(200).json({ message: 'No trains found' });
     } else {
       res.json({ status: "ok", trains });
     }
@@ -36,7 +39,6 @@ const getTrains = async (req, res) => {
     console.log(error)
     res.status(500).json({ message: "Error fetching trains" })
   }
-  // return (res.json({status: 'ok'}))
   return res.status.json
 }
 

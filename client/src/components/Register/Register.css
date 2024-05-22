@@ -6,8 +6,7 @@
     flex-direction: column;
     min-height: 100vh;
     perspective: 1000px;
-    /* Enable 3D perspective for hover effects */
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Registration Heading */
@@ -52,13 +51,6 @@
     cursor: pointer;
 }
 
-.Register-form-container:hover {
-    transform: translateY(-5px);
-    /* Form lifts on hover */
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.779);
-    /* More prominent shadow on hover */
-}
-
 .Register-form{
     padding: 30px;
     display: flex;
@@ -74,7 +66,7 @@
     border-radius: 5px;
     /* Rounded corners */
     font-size: 16px;
-    background-color: #e2e2e2;
+    background-color: #e8e8e8;
     /* Darker background for inputs */
     color: #000000e6;
     /* Lighter text color for inputs */
@@ -91,11 +83,12 @@
     /* Input background changes on focus */
     color: #000000;
     border: 1px solid rgba(0, 0, 0, 0.59);
-    /* Text becomes white on focus */
+    background-color: whitesmoke;
 }
 
 /* Label Styles */
 .rf-label {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: block;
     margin: 0 2rem 1rem 2rem;
     font-size: 15px;
@@ -103,6 +96,24 @@
     /* Inherit text color from body */
     text-shadow: 0 0 2px #00000032;
     /* Subtle text glow effect */
+}
+
+.pswrd-invalid {
+    border: 1px solid red;
+    animation: blink 1s 3 ease-in-out;
+}
+
+@keyframes blink {
+    from { border-color: red; }
+    to { border-color: transparent; }
+}
+
+.password-complexity-feedback{
+    color: red;
+    margin: 0 2rem 1rem 2rem;
+    font-size: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
 
 /* Select Element */
@@ -113,12 +124,11 @@
     -moz-appearance: none;
     appearance: none;
     padding-right: 10px;
-    /* Add some padding for the dropdown arrow */
-    /* background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlmZWlnPSI4IiB2aWV3Qm94PSIwIDAgOCA4Ij48cGF0aCBkPSJNNSAyLjUgMiAwLjVsMyAyLjVMMCA4di0zLjV6IiBmaWxsPSIjZWVlIiBmaWxsLX"); */
-    /* Custom dropdown arrow icon */
+    padding-left: 10px;
     background-repeat: no-repeat;
     background-position: right center;
 }
+
 
 /* Submit Button */
 .Register-submit-button {
