@@ -42,5 +42,18 @@ const getTrains = async (req, res) => {
   return res.status.json
 }
 
-module.exports = { getTrains };
+const getTrainInfoByNumber = async (req, res) => {
+  try {
+    const train = await TrainSchema.findOne({ trainNo: req.body.trainNo });
+    if (!train) {
+      return res.status(404).json({ error: "Train not found" });
+    }
+    res.status(200).json(train);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+  return res.status.json
+}
+
+module.exports = { getTrains, getTrainInfoByNumber };
 

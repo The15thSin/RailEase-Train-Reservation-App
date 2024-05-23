@@ -1,0 +1,59 @@
+.TrainInfo{
+    display: flex;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5rem;
+}
+
+.ti-upper-table{
+    width: 80%;
+    border-collapse: collapse;
+}
+
+.ti-upper-table th{
+    border: 2px solid rgb(0, 0, 0);
+    padding: 10px;
+    font-weight: bold;
+    background-color: rgb(48, 54, 243);
+    color: #ffffff;
+}
+
+.ti-upper-table td{
+    border: 2px solid black;
+    padding: 10px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.ti-lower-station-table{
+    width: 80%;
+    border-collapse: collapse;
+    margin: 2rem 3rem 5rem 3rem;
+}
+
+.ti-lower-station-table-row:nth-child(even){
+    background-color: #ebf4ff;
+}
+
+.ti-lower-station-table-row:nth-child(odd){
+    background-color: #ffffff;
+}
+
+.ti-lower-station-table th{
+    border: 2px solid rgb(0, 0, 0);
+    padding: 10px;
+    font-weight: bold;
+    background-color: rgb(48, 54, 243);
+    color: #ffffff;
+}
+
+.ti-lower-station-table td{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.279);
+    padding: 10px;
+    /* background-color: #fff; */
+    text-align: center;
+    /* padding-left: 1rem; */
+}

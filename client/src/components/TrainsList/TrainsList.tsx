@@ -1,21 +1,24 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import './TrainsList.css'
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import TrainInfo from '../TrainInfo/TrainInfo';
 
 function TrainsList() {
     const location = useLocation();
     const { trains, doj, srcStation, destStation, seatData } = location.state;
-    console.log(trains)
-    console.log(seatData)
+    // console.log(trains)
+    // console.log(seatData)
 
     const dateString = doj;
     const date = new Date(dateString);
-    console.log(date)
+    // console.log(date)
     const dayIndex = date.getDay();
 
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const dayName = days[dayIndex];
+
+    const [viewTD, setViewTD] = useState(0)
 
     const navigate = useNavigate();
 
@@ -46,7 +49,7 @@ function TrainsList() {
     }
 
     const calcTime = (startTime: String, duration: Number) => {
-        console.log(startTime, duration)
+        // console.log(startTime, duration)
         let time = startTime.split(':')
         let hr = Math.floor(Number(duration) / 60)
         let min = Number(duration) % 60
@@ -93,7 +96,7 @@ function TrainsList() {
 
         const data = await res.json();
         const stnName = data[0].stationName;
-        await console.log("Station Name : ", stnName)
+        // await console.log("Station Name : ", stnName)
         return stnName;
     }
 
@@ -109,10 +112,6 @@ function TrainsList() {
         };
         fetchData();
     }, [srcStation, destStation])
-
-    function showTrainInfo(trainNo: number) {
-        console.log(trainNo);
-    }
 
     return (
         <motion.div
@@ -162,7 +161,7 @@ function TrainsList() {
                                         {train.trainType}
                                     </span>
                                     <button className='view-train-details'
-                                        onClick={()=>showTrainInfo(train.trainNo)}>
+                                        onClick={()=>setViewTD(train.trainNo)}>
                                         View Details
                                     </button>
                                 </p>
@@ -402,8 +401,26 @@ function TrainsList() {
                         </div>
                     ))
             }
-
-            
+            <AnimatePresence mode='wait'>
+            {
+                (viewTD !== 0)&&
+                (<motion.div 
+                className="view-train-details-window"
+                initial={{ opacity: 0 , y: "-100%"} }
+                    animate={{ opacity: 1 , y: "0"}}
+                    exit={{ opacity: 0 , y: "-100%"}}
+                    transition={{ duration: 0.4, ease:"easeInOut" }}
+                    >
+                    <button 
+                        className="view-train-details-close-btn" 
+                        onClick={()=>{setViewTD(0)}}
+                    >
+                        &#10539;
+                    </button>
+                    <TrainInfo trainNo = {viewTD}/>
+                </motion.div>)
+            }
+            </AnimatePresence>
         </motion.div>
     );
 };
