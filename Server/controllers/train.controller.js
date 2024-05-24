@@ -44,6 +44,7 @@ const getTrains = async (req, res) => {
 
 const getTrainInfoByNumber = async (req, res) => {
   try {
+    console.log(req.body.trainNo)
     const train = await TrainSchema.findOne({ trainNo: req.body.trainNo });
     if (!train) {
       return res.status(404).json({ error: "Train not found" });

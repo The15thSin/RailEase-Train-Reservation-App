@@ -26,6 +26,8 @@ function Register() {
     const [dob, setDOB] = useState('')
     const [phone, setPhone] = useState(0)
     const [pincode, setPincode] = useState(0)
+    const [seqQuestion, setSeqQuestion] = useState("")
+    const [seqAnswer, setSeqAnswer] = useState("")
     const [response, setResponse] = useState(0)
 
     const navigate = useNavigate()
@@ -83,6 +85,8 @@ function Register() {
             dob: dob,
             phone: phone,
             pincode: pincode,
+            seqQuestion: seqQuestion,
+            seqAnswer: seqAnswer
         };
 
         const response = await fetch('http://localhost:6969/api/register', {
@@ -122,7 +126,7 @@ function Register() {
                     </div>
                 </div>
                 <form className="Register-form" onSubmit={RegisterUser}>
-                    <label className='rf-label' htmlFor="name">Full Name :</label>
+                    <label className='rf-label' htmlFor="name">Full Name : <text style={{ color: 'red' }}>*</text></label>
                     <input
                         id="name"
                         className='RF-input'
@@ -133,7 +137,7 @@ function Register() {
                         placeholder='Enter your full name'
                         required
                     />
-                    <label className='rf-label' htmlFor="email">Email :</label>
+                    <label className='rf-label' htmlFor="email">Email : <text style={{ color: 'red' }}>*</text></label>
                     <input
                         id="email"
                         className='RF-input'
@@ -145,7 +149,7 @@ function Register() {
                         placeholder='Enter your Email address'
                         required
                     />
-                    <label className='rf-label' htmlFor="Password">Password :</label>
+                    <label className='rf-label' htmlFor="Password">Password : <text style={{ color: 'red' }}>*</text></label>
                     <input
                         id="Password"
                         className={feedback==='' ? 'RF-input' : 'RF-input pswrd-invalid' }
@@ -161,7 +165,7 @@ function Register() {
                     <p className="password-complexity-feedback" aria-live="polite">
                         {feedback}
                     </p>
-                    <label className='rf-label' htmlFor="Re-password">Re-enter Password :</label>
+                    <label className='rf-label' htmlFor="Re-password">Re-enter Password : <text style={{ color: 'red' }}>*</text></label>
                     <input
                         id="Re-password"
                         className={feedback==='' ? 'RF-input' : 'RF-input pswrd-invalid' }
@@ -173,7 +177,7 @@ function Register() {
                         placeholder='Re-enter Password'
                         required
                     />
-                    <label className='rf-label' htmlFor="dob">Date of Birth :</label>
+                    <label className='rf-label' htmlFor="dob">Date of Birth : <text style={{ color: 'red' }}>*</text></label>
                     <input
                         id="dob"
                         className='RF-input'
@@ -185,7 +189,7 @@ function Register() {
                         placeholder='Enter your Date of Birth'
                         required
                     />
-                    <label className='rf-label' htmlFor="sex">Gender :</label>
+                    <label className='rf-label' htmlFor="sex">Gender : <text style={{ color: 'red' }}>*</text></label>
                     <select
                         className='RF-input'
                         name="sex"
@@ -197,7 +201,7 @@ function Register() {
                         <option value="Female">Female</option>
                         <option value="Gay">Others</option>
                     </select>
-                    <label className='rf-label' htmlFor="Number">Phone Number :</label>
+                    <label className='rf-label' htmlFor="Number">Phone Number : <text style={{ color: 'red' }}>*</text></label>
                     <input
                         id="Number"
                         className='RF-input'
@@ -209,7 +213,7 @@ function Register() {
                         placeholder='Enter your Phone Number'
                         required
                     />
-                    <label className='rf-label' htmlFor="Pincode">Pincode :</label>
+                    <label className='rf-label' htmlFor="Pincode">Pincode : <text style={{ color: 'red' }}>*</text></label>
                     <input
                         id="pincode"
                         className='RF-input'
@@ -220,6 +224,34 @@ function Register() {
                         onChange={(e) => {
                             setPincode(parseInt(e.target.value))
                         }}
+                    />
+                    <label className="rf-label" htmlFor="seq-question">Select your Secret Question : <text style={{ color: 'red' }}>*</text></label>
+                    <select
+                        className='RF-input'
+                        name="seq-question"
+                        id="seq-question"
+                        onChange={(e) => setSeqQuestion(e.target.value)}
+                        required>
+                        <option defaultChecked>-- Select your Secret Question --</option>
+                        <option value="What is your favourite food?">What is your favourite food?</option>
+                        <option value="What is your favourite color?">What is your favourite color?</option>
+                        <option value="What is your favourite movie?">What is your favourite movie?</option>
+                        <option value="Who is your favourite pornstar?">Who is your favourite pornstar?</option>
+                        <option value="What position you like to fuck in/ being fucked?">What position you like to fuck in/being fucked?</option>
+                        <option value="How many times did you fucked?">How many times did you fucked?</option>
+                        <option value="What is your pp length?">What is your pp length?</option>
+                    </select>
+                    <label className='rf-label' htmlFor="seq-answer">Enter your answer : <text style={{ color: 'red' }}>*</text></label>
+                    <input
+                        id="seq-answer"
+                        className='RF-input'
+                        type="text"
+                        placeholder='Enter your answer'
+                        value={seqAnswer}
+                        onChange={(e) => {
+                            setSeqAnswer(e.target.value)
+                        }}
+                        required
                     />
                     <button type="submit" className='Register-submit-button'>
                         Register

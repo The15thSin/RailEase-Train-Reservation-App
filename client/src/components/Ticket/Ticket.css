@@ -30,32 +30,33 @@
     color: #333;
 }
 
-/* Ticket Details */
-.ticket-details {
-    margin-bottom: 20px;
-    width: 60%;
-    /* background-color: blue; */
+.ticket-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
-/* Ticket Info */
-.ticket-info {
-    margin-bottom: 10px;
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;
-    /* gap: 4rem; */
-}
-
-.info-label {
-    flex: 0 0 200px;
-    font-weight: 500;
-    color: #555;
-}
-
-.info-value {
-    margin: 0;
-    color: #333;
+.ticket-table th{
+    /* border: 1px solid rgb(0, 0, 0); */
+    padding: 10px;
     font-weight: bold;
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+}
+
+.ticket-table td{
+    border: 1px solid rgba(0, 0, 0, 0.147);
+    padding: 10px;
+    background-color: #ecf4ff;
+    text-align: center;
+}
+
+.tt-td-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 /* Passenger List */

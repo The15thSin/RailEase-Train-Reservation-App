@@ -144,7 +144,7 @@ function TrainsList() {
                             distance: number | null | undefined;
                             halt: number | null | undefined;
                         }[];
-                        startTime: string;  
+                        startTime: string;
                         seats: {
                             sl: number | null | undefined;
                             ac3: number | null | undefined;

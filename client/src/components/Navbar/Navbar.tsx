@@ -56,6 +56,11 @@ function Navbar() {
                         {
                             (isLoggedIn) ?
                                 <>
+                                    <Link to = '/dashboard'>
+                                        <button className='go-to-dashboard' >
+                                            Go to Dashboard
+                                        </button>
+                                    </Link>
                                     <button className="logout-button" onClick={handleLogout}>
                                         Logout
                                         <img width="20" height="20" src="https://img.icons8.com/tiny-glyph/16/ff0000/exit.png"

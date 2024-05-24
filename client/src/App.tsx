@@ -10,6 +10,7 @@ const BookingForm = lazy(() => import('./components/BookingForm/BookingForm'))
 const Ticket = lazy(() => import('./components/Ticket/Ticket')) 
 import Loading from './components/Loading/Loading'
 import './App.css'
+import ForgotPassword from './components/ForgotPassword/ForgotPassword'
 
 function DashboardRoutes() {
   return (
@@ -63,7 +64,12 @@ function App() {
             <DashboardRoutes />
           </>
         } />
-        {/* <Route path='/load' element={<Loading />}/> */}
+        <Route path='/forgot-password' element={
+          <Suspense fallback={<Loading />}>
+            <ForgotPassword />
+          </Suspense>
+        } />
+        
       </Routes>
     </BrowserRouter>
   )

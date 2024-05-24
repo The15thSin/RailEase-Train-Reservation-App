@@ -78,7 +78,7 @@ function Login() {
                             }}
                             required
                         />
-                        <p className="login-form-frgt-psswd">Forgot Password?<a href="/recover"> Click Here</a></p>
+                        <p className="login-form-frgt-psswd">Forgot Password?<Link to="/forgot-password"> Click Here</Link></p>
                         <button type="submit">Sign In</button>
                     </form>
                 </div>

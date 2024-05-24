@@ -21,7 +21,7 @@
     z-index: 100;
 }
 
-.nav span{
+.nav span {
     display: flex;
     gap: 1rem;
     align-items: center;
@@ -42,7 +42,7 @@
     transition: all 0.5s ease-in-out;
 }
 
-.login-button:hover{
+.login-button:hover {
     background-color: #090b34;
 }
 
@@ -59,17 +59,37 @@
     padding: 0.5rem 1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.7s ease-in-out;
+    transition: all 0.3s ease-in-out;
     border-color: #ff0000;
 }
 
-.logout-button:hover{
+.logout-button:hover {
     color: #ff0000;
     background-color: #ffd7d7;
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.292);
 }
 
-.register-button{
+/* Basic styles for the button */
+.go-to-dashboard {
+    background-color: #ffffff;
+    /* Adjust background color as needed */
+    color: blue;
+    padding: 10px 10px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    /* border-radius: 5px; */
+    transition: all 0.2s ease-in-out;
+    text-decoration: underline;
+}
+
+.go-to-dashboard:hover {
+    color: #000000;
+    /* transform: scale(1.02); */
+}
+
+
+.register-button {
     background-color: rgba(37, 42, 194, 0);
     width: 9rem;
     border: 2px solid #252bc2;
@@ -84,28 +104,31 @@
     transition: all 0.5s ease-in-out;
 }
 
-.register-button:hover{
+.register-button:hover {
     border-color: #090b34;
     /* color: #090b34; */
 }
 
 
 @media screen and (max-width: 600px) {
-    .nav{
+    .nav {
         font-size: 21px;
         width: 112.5vw;
         position: fixed;
     }
-    .nav span img{
+
+    .nav span img {
         width: 45px;
         height: 45px;
     }
-    .login-button{
+
+    .login-button {
         width: 7rem;
         font-size: 1.1rem;
         padding: 0.3rem .8rem;
     }
-    .register-button{
+
+    .register-button {
         width: 8rem;
         font-size: 1.1rem;
         padding: 0.3rem .6rem;
