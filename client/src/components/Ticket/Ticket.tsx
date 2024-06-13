@@ -53,6 +53,7 @@ function Ticket() {
                 _id: ""
             }
         ],
+        fare: 0
     });
     async function getTicketDetails() {
         const res = await fetch("http://localhost:6969/api/getTickets", {
@@ -91,8 +92,6 @@ function Ticket() {
         // console.log(data)
         return data;
     }
-
-
 
     const calcTime = (startTime: String, duration: Number) => {
         // console.log(startTime, duration)
@@ -305,6 +304,19 @@ function Ticket() {
                                 ))
                             }
                         </tbody>
+                    </table>
+                </div>
+                <div style={{width: "100%"}}>
+                    <table className='fare-table'>
+                        <colgroup>
+                            <col style={{ width: "20%" }}/>
+                            <col style={{ width: "80%" }}/>
+                        </colgroup>
+                        <tr>
+                            <th>Total Fare</th>
+                            <th>&#8377;{ticket.fare}
+                            </th>
+                        </tr>
                     </table>
                 </div>
             </div>

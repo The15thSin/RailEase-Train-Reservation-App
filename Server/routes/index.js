@@ -11,7 +11,6 @@ const createRouter = () => {
   const router = express.Router();
 
   // Public routes
-  router.get("/", (req, res) => res.send("Welcome to the backend of Railway-Reservation-System"))
   router.use("/", authRoutes);
   router.use("/", trainRoutes);
   router.use("/", reserveRoutes);

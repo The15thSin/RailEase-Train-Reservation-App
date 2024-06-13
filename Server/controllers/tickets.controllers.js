@@ -23,6 +23,7 @@ const createTicket = async (req, res) => {
       travelDate: req.body.doj,
       coach: req.body.coach,
       passengerDetails: req.body.passengers,
+      fare: req.body.fare,
     });
     console.log("New Ticket created", newTicket)
     res.status(200).json({ ticketInfo: { newTicket }, status: "ok" });

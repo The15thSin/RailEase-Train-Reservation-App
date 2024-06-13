@@ -107,6 +107,20 @@
     border: 2px solid grey;
 }
 
+.fare-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.fare-table th{
+    border: 1px solid rgb(0, 0, 0);
+    padding: 10px;
+    font-weight: bold;
+    background-color: rgb(255, 255, 255);
+    color: #001a8e;
+}
+
 /* Print Button */
 .print-tkt {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

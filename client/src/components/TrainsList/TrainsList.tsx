@@ -22,30 +22,90 @@ function TrainsList() {
 
     const navigate = useNavigate();
 
+    const getFare = (trainType: string, coach: string, srcDist: number, destDist: number) => {
+
+        // base fare calculation
+        let base_fare;
+        base_fare = (100 * Math.log10(destDist - srcDist)) + Math.pow(destDist - srcDist, 0.8)
+        base_fare = Math.round(base_fare / 10) * 10
+        // console.log(base_fare);
+
+        let fare = 0;
+
+        // fare depending on train type
+        if (trainType === "SF-Express") {
+            fare = base_fare + base_fare * 0.2;
+        }
+        else if (trainType === "Mail-Express") {
+            fare = base_fare + base_fare * 0.05;
+        }
+        else if (trainType === "AC-Express") {
+            fare = base_fare + base_fare * 0.4;
+        }
+
+        // fare depending on coach type
+        if (coach === "ac2") {
+            fare = fare + Math.round(base_fare / 100) * 300
+        } else if (coach === "ac3") {
+            fare = fare + Math.round(base_fare / 100) * 150
+        }
+
+        // taxes on fare calc
+        let tax;
+        tax = fare * 0.05;
+
+        fare += tax;
+        // console.log(fare);
+        
+        return fare.toFixed(2);
+    }
+
     async function handleBookSeat(
         train:
             {
-                key: string | undefined;
-                trainNo: number | null | undefined;
-                trainName: string | null | undefined;
+                key: string;
+                trainNo: number;
+                trainName: string;
                 daysOfOp: any[];
                 stations: {
-                    stationCode: string | null | undefined;
-                    duration: number | null | undefined;
-                    distance: number | null | undefined;
-                    halt: number | null | undefined;
+                    stationCode: string;
+                    duration: number;
+                    distance: number;
+                    halt: number;
                 }[];
-                startTime: string | null | undefined;
+                startTime: string;
                 seats: {
-                    sl: number | null | undefined;
-                    ac3: number | null | undefined;
-                    ac2: number | null | undefined;
+                    sl: number;
+                    ac3: number;
+                    ac2: number;
                 };
-                trainType: string | null | undefined;
+                trainType: string;
             },
         coach: string
     ) {
-        navigate('/dashboard/book-seat', { state: { train: train, coach: coach, doj: doj, srcStation, destStation } });
+
+        console.log("trains info : ", train);
+        let fare = getFare(
+            train.trainType,
+            coach,
+            train.stations
+                .filter((station) => station.stationCode === srcStation)
+                .map((station) => station.distance)[0],
+            train.stations
+                .filter((station) => station.stationCode === destStation)
+                .map((station) => station.distance)[0])
+        console.log("fare : ", fare);
+        
+        navigate('/dashboard/book-seat', {
+            state: {
+                train: train,
+                coach: coach,
+                doj: doj,
+                srcStation,
+                destStation,
+                fare: fare
+            }
+        });
     }
 
     const calcTime = (startTime: String, duration: Number) => {
@@ -134,23 +194,23 @@ function TrainsList() {
                 trains
                     .filter((train: { daysOfOp: any[]; }) => train.daysOfOp.includes(dayName))
                     .map((train: {
-                        key: string | undefined;
+                        key: string;
                         trainNo: number;
-                        trainName: string | null | undefined;
+                        trainName: string;
                         daysOfOp: any[];
                         stations: {
-                            stationCode: string | null | undefined;
+                            stationCode: string;
                             duration: number;
-                            distance: number | null | undefined;
-                            halt: number | null | undefined;
+                            distance: number;
+                            halt: number;
                         }[];
                         startTime: string;
                         seats: {
-                            sl: number | null | undefined;
-                            ac3: number | null | undefined;
-                            ac2: number | null | undefined;
+                            sl: number;
+                            ac3: number;
+                            ac2: number;
                         };
-                        trainType: string | null | undefined;
+                        trainType: string;
                     }
                     ) => (
                         <div key={train.trainNo} className='TrainsList-container'>
@@ -161,7 +221,7 @@ function TrainsList() {
                                         {train.trainType}
                                     </span>
                                     <button className='view-train-details'
-                                        onClick={()=>setViewTD(train.trainNo)}>
+                                        onClick={() => setViewTD(train.trainNo)}>
                                         View Details
                                     </button>
                                 </p>
@@ -211,6 +271,18 @@ function TrainsList() {
                                         } hours
                                     </p>
                                     <img width="50" height="50" src="https://img.icons8.com/ios/50/long-arrow-right--v1.png" alt="long-arrow-right--v1" />
+                                    <p>
+                                        {
+                                            // Distance between two stations
+                                            (train.stations
+                                                .filter((station) => station.stationCode === destStation)
+                                                .map((station) => station.distance)[0])
+                                            -
+                                            (train.stations
+                                                .filter((station) => station.stationCode === srcStation)
+                                                .map((station) => station.distance)[0])
+                                        } kms
+                                    </p>
                                 </span>
                                 <span className='tl-stn-dest'>
                                     <div>{destStnName}</div>
@@ -252,6 +324,21 @@ function TrainsList() {
                                             }
                                         </span>
                                     </p>
+                                    <p className='tlsb-fare'>
+                                        &#8377;
+                                        {
+                                            getFare(
+                                                train.trainType,
+                                                "sl",
+                                                train.stations
+                                                    .filter((station) => station.stationCode === srcStation)
+                                                    .map((station) => station.distance)[0],
+                                                train.stations
+                                                    .filter((station) => station.stationCode === destStation)
+                                                    .map((station) => station.distance)[0]
+                                            )
+                                        }
+                                    </p>
                                     {(train.seats.sl !== undefined && train.seats.sl !== null && train.seats.sl - seatData.find((data: { trainNo: number; }) => data.trainNo === train.trainNo).seats.sl > 0)
                                         ?
                                         <button className="tlsb-book-btn" onClick={() => handleBookSeat(train, "sl")}>
@@ -278,6 +365,21 @@ function TrainsList() {
                                             }
                                         </span>
                                     </p>
+                                    <p className='tlsb-fare'>
+                                        &#8377;
+                                        {
+                                            getFare(
+                                                train.trainType,
+                                                "ac3",
+                                                train.stations
+                                                    .filter((station) => station.stationCode === srcStation)
+                                                    .map((station) => station.distance)[0],
+                                                train.stations
+                                                    .filter((station) => station.stationCode === destStation)
+                                                    .map((station) => station.distance)[0]
+                                            )
+                                        }
+                                    </p>
                                     {(train.seats.ac3 !== undefined && train.seats.ac3 !== null && train.seats.ac3 - seatData.find((data: { trainNo: number; }) => data.trainNo === train.trainNo).seats.ac3 > 0)
                                         ?
                                         <button className="tlsb-book-btn" onClick={() => handleBookSeat(train, "ac3")}>
@@ -293,7 +395,6 @@ function TrainsList() {
                                     <p className='tlsb-coach'>2AC</p>
                                     <p className='tlsb-availability'>
                                         <span>
-
                                             {(train.seats.ac2 !== undefined && train.seats.ac2 !== null && train.seats.ac2 - seatData.find((data: { trainNo: number; }) => data.trainNo === train.trainNo).seats.ac2 > 0)
                                                 ?
                                                 <p style={{ color: "green" }}>Available - #{train.seats.ac2
@@ -303,6 +404,21 @@ function TrainsList() {
                                                 <p style={{ color: "red" }}>Not Available</p>
                                             }
                                         </span>
+                                    </p>
+                                    <p className='tlsb-fare'>
+                                        &#8377;
+                                        {
+                                            getFare(
+                                                train.trainType,
+                                                "ac2",
+                                                train.stations
+                                                    .filter((station) => station.stationCode === srcStation)
+                                                    .map((station) => station.distance)[0],
+                                                train.stations
+                                                    .filter((station) => station.stationCode === destStation)
+                                                    .map((station) => station.distance)[0]
+                                            )
+                                        }
                                     </p>
                                     {(train.seats.ac2 !== undefined && train.seats.ac2 !== null && train.seats.ac2 - seatData.find((data: { trainNo: number; }) => data.trainNo === train.trainNo).seats.ac2 > 0)
                                         ?
@@ -402,24 +518,24 @@ function TrainsList() {
                     ))
             }
             <AnimatePresence mode='wait'>
-            {
-                (viewTD !== 0)&&
-                (<motion.div 
-                className="view-train-details-window"
-                initial={{ opacity: 0 , y: "-100%"} }
-                    animate={{ opacity: 1 , y: "0"}}
-                    exit={{ opacity: 0 , y: "-100%"}}
-                    transition={{ duration: 0.4, ease:"easeInOut" }}
+                {
+                    (viewTD !== 0) &&
+                    (<motion.div
+                        className="view-train-details-window"
+                        initial={{ opacity: 0, y: "-100%" }}
+                        animate={{ opacity: 1, y: "0" }}
+                        exit={{ opacity: 0, y: "-100%" }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
                     >
-                    <button 
-                        className="view-train-details-close-btn" 
-                        onClick={()=>{setViewTD(0)}}
-                    >
-                        &#10539;
-                    </button>
-                    <TrainInfo trainNo = {viewTD}/>
-                </motion.div>)
-            }
+                        <button
+                            className="view-train-details-close-btn"
+                            onClick={() => { setViewTD(0) }}
+                        >
+                            &#10539;
+                        </button>
+                        <TrainInfo trainNo={viewTD} />
+                    </motion.div>)
+                }
             </AnimatePresence>
         </motion.div>
     );

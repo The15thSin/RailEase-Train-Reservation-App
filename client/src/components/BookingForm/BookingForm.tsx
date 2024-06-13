@@ -13,7 +13,8 @@ interface Passenger {
 function BookingForm() {
     const location = useLocation();
     const navigate = useNavigate();
-    const { train, coach, doj, srcStation, destStation } = location.state;
+    const { train, coach, doj, srcStation, destStation, fare } = location.state;
+    // console.log(location.state)
     
     const [passengers, setPassengers] = useState<Passenger[]>([]);
     const passengerObject: Passenger = {
@@ -68,6 +69,7 @@ function BookingForm() {
             srcStation: srcStation,
             destStation: destStation,
             passengers: passengers,
+            fare: fare
         };
 
 
@@ -85,7 +87,6 @@ function BookingForm() {
         if (data.status === "ok") {
             alert("Ticket booked successfully");
             navigate("/ticket", { state: { pnr: data.ticketInfo.newTicket.pnr } });
-            
         } else {
             alert("Ticket booking failed");
         }
@@ -139,6 +140,10 @@ function BookingForm() {
                     <div className="booking-detail">
                         <span className="detail-label">Destination:</span>
                         <span className="detail-value">{destStation}</span>
+                    </div>
+                    <div className="booking-detail">
+                        <span className="detail-label">Fare:</span>
+                        <span className="detail-value">{fare}</span>
                     </div>
                 </div>
 

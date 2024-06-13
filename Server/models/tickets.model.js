@@ -66,6 +66,10 @@ const ticketSchema = new mongoose.Schema(
       required: true,
       default: "Confirmed",
     },
+    fare: {
+      type: Number,
+      required: true,
+    }
   },
   { collection: "tickets" }
 );

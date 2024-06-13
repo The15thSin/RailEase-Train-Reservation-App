@@ -11,6 +11,7 @@ const Ticket = lazy(() => import('./components/Ticket/Ticket'))
 import Loading from './components/Loading/Loading'
 import './App.css'
 import ForgotPassword from './components/ForgotPassword/ForgotPassword'
+import MyBookings from './components/MyBookings/MyBookings'
 
 function DashboardRoutes() {
   return (
@@ -67,6 +68,11 @@ function App() {
         <Route path='/forgot-password' element={
           <Suspense fallback={<Loading />}>
             <ForgotPassword />
+          </Suspense>
+        } />
+        <Route path='/my-bookings' element={
+          <Suspense fallback={<Loading />}>
+            <MyBookings />
           </Suspense>
         } />
         
