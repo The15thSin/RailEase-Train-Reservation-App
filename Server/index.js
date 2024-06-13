@@ -14,7 +14,9 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 //DB connection
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI_S)
+    .then(()=>{console.log("Connected to database...")})
+    .catch(err => console.log("Error connecting database !!!", err))
 
 //routes
 const router = createRouter();

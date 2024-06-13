@@ -5,7 +5,8 @@
   "license": "MIT",
   "type": "commonjs",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "server": "node index.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
