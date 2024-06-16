@@ -1,7 +1,9 @@
 const router = require("express").Router();
-const { createTicket, getTickets } = require("../controllers/tickets.controllers");
+const { createTicket, getTickets, cancelTicketByPnr, getTicketByPnr } = require("../controllers/tickets.controllers");
 
-router.post('/tickets', createTicket)
-router.post('/getTickets', getTickets)
+router.post('/ticket',createTicket)
+router.get('/getTickets', getTickets)
+router.get('/getTickets/:pnr', getTicketByPnr)
+router.delete('/cancelTicket/:pnr', cancelTicketByPnr)
 
 module.exports = router

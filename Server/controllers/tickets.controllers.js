@@ -11,7 +11,6 @@ function generateRandomNumberPnr() {
 
 const createTicket = async (req, res) => {
   try {
-    // const ticket = new Ticket();
     console.log("Ticket object:", req.body);
     const newTicket = await Ticket.create({
       pnr: generateRandomNumberPnr(),
@@ -28,7 +27,6 @@ const createTicket = async (req, res) => {
     console.log("New Ticket created", newTicket)
     res.status(200).json({ ticketInfo: { newTicket }, status: "ok" });
   } catch (error) {
-    // console.error("Error creating ticket:", error);
     res.status(500).json({ error: "Failed to create ticket" });
   }
 };
@@ -36,11 +34,7 @@ const createTicket = async (req, res) => {
 // Get all tickets
 const getTickets = async (req, res) => {
   try {
-    const tickets = await Ticket.find(
-      {
-        "pnr": req.body.pnr
-      }
-    );
+    const tickets = await Ticket.find({});
     res.status(200).json(tickets);
   } catch (error) {
     console.error("Error fetching tickets:", error);
@@ -49,9 +43,9 @@ const getTickets = async (req, res) => {
 };
 
 // Get ticket by ID
-const getTicketById = async (req, res) => {
+const getTicketByPnr = async (req, res) => {
   try {
-    const ticket = await Ticket.findById(req.params.id);
+    const ticket = await Ticket.find({pnr: req.params.pnr});
     if (!ticket) {
       return res.status(404).json({ error: "Ticket not found" });
     }
@@ -62,16 +56,15 @@ const getTicketById = async (req, res) => {
   }
 };
 
-// Delete ticket
-const deleteTicketById = async (req, res) => {
+const cancelTicketByPnr = async (req, res) => {
   try {
-    const deletedTicket = await Ticket.findByIdAndDelete(req.params.id);
+    const deletedTicket = await Ticket.findOneAndDelete({pnr: req.params.pnr});
     if (!deletedTicket) {
       return res.status(404).json({ error: "Ticket not found" });
     }
-    res.status(204).end();
+    // res.status(204).end();
+    res.status(200).json({message: "ticket has been cancelled!"});
   } catch (error) {
-    console.error("Error deleting ticket by ID:", error);
     res.status(500).json({ error: "Failed to delete ticket" });
   }
 };
@@ -79,6 +72,6 @@ const deleteTicketById = async (req, res) => {
 module.exports = {
   createTicket,
   getTickets,
-  getTicketById,
-  deleteTicketById
+  getTicketByPnr,
+  cancelTicketByPnr
 }
