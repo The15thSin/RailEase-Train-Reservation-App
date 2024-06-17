@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './TrainInfo.css'
+import config from '../../config.ts'
 
 interface Train {
     key: string;
@@ -24,7 +25,7 @@ interface Train {
 
 function TrainInfo(props: { trainNo: any }) {
     async function getTrainData() {
-        const res = await fetch("http://localhost:6969/api/getTrainInfoByNumber", {
+        const res = await fetch(`${config.BACKEND_URL}/api/getTrainInfoByNumber`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -48,7 +49,7 @@ function TrainInfo(props: { trainNo: any }) {
     }, [props.trainNo])
 
     async function getStnName(stationCode: string) {
-        const res = await fetch(`http://localhost:6969/api/getStnName`, {
+        const res = await fetch(`${config.BACKEND_URL}/api/getStnName`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

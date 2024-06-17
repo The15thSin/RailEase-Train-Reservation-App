@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './Register.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
+import config from '../../config.ts'
 
 interface PasswordComplexity {
     type: string;
@@ -85,11 +86,11 @@ function Register() {
             dob: dob,
             phone: phone,
             pincode: pincode,
-            seqQuestion: seqQuestion,
-            seqAnswer: seqAnswer
+            securityQuestion: seqQuestion,
+            securityAnswer: seqAnswer
         };
 
-        const response = await fetch('http://localhost:6969/api/register', {
+        const response = await fetch(`${config.BACKEND_URL}/api/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

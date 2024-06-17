@@ -3,6 +3,7 @@ import './TrainsList.css'
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import TrainInfo from '../TrainInfo/TrainInfo';
+import config from '../../config';
 
 function TrainsList() {
     const location = useLocation();
@@ -144,7 +145,7 @@ function TrainsList() {
     }
 
     async function getStnName(stationCode: string) {
-        const res = await fetch(`http://localhost:6969/api/getStnName`, {
+        const res = await fetch(`${config.BACKEND_URL}/api/getStnName`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

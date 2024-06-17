@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import './BookingForm.css';
+import config from '../../config.ts'
 
 interface Passenger {
     name: string;
@@ -60,8 +61,20 @@ function BookingForm() {
             return;
         }
 
+        function decode(token: string) {
+            try {
+                const tokenValue = JSON.parse(window.atob(token.split(".")[1]));
+                // console.log(tokenValue);
+                return tokenValue;
+            } catch (e) {
+                return undefined;
+            }
+        }
+        const user = decode(localStorage.getItem('token')!);
+        // console.log(user.email)
+
         const ticketReq = {
-            userID: "1",
+            userEmail: user.email,
             trainNo: train.trainNo,
             trainName: train.trainName,
             coach: coach,
@@ -75,7 +88,7 @@ function BookingForm() {
 
         console.log("Submitted passenger data:", ticketReq);
 
-        const response = await fetch("http://localhost:6969/api/tickets", {
+        const response = await fetch(`${config.BACKEND_URL}/api/tickets`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

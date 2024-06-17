@@ -16,7 +16,7 @@ const ticketSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    userID: {
+    userEmail: {
       type: String,
       ref: "User",
       required: true,

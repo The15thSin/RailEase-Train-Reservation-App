@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TrainSearch from "../TrainSearch/TrainSearch";
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -24,7 +24,7 @@ function Dashboard() {
 
     useEffect(() => {
         const token = localStorage.getItem('token');
-        if(!token){
+        if (!token) {
             navigate('/login');
         }
         const user = decode(token!);
@@ -38,8 +38,8 @@ function Dashboard() {
     //     console.log("manageProf:", manageProf); // Log state value for verification
     // }, [manageProf]);
 
-    const user=decode(localStorage.getItem('token')!);
-    const {name}=user;
+    const user = decode(localStorage.getItem('token')!);
+    const { name } = user;
 
     return (
 
@@ -69,15 +69,16 @@ function Dashboard() {
                             </p>
                         </button>
                     </div>
-
-                    <div className="db-option">
-                        <button>
-                            <img className="db-opt-logo" width="64" height="64" src="https://img.icons8.com/nolan/64/event-accepted.png" alt="event-accepted" />
-                            <p>
-                                View your Bookings
-                            </p>
-                        </button>
-                    </div>
+                    <Link to='/my-bookings'>
+                        <div className="db-option">
+                            <button>
+                                <img className="db-opt-logo" width="64" height="64" src="https://img.icons8.com/nolan/64/event-accepted.png" alt="event-accepted" />
+                                <p>
+                                    View your Bookings
+                                </p>
+                            </button>
+                        </div>
+                    </Link>
 
                     <div className="db-option">
                         <button>
@@ -110,11 +111,13 @@ function Dashboard() {
                         <div>
                             <span className="db-manage">
                                 <div className="db-manage-option">
-                                    <button>
-                                        <img width="32" height="32" src="https://img.icons8.com/nolan/64/key.png" alt="key" />                                <p>
-                                            Change Password
-                                        </p>
-                                    </button>
+                                    <Link to="/change-password">
+                                        <button>
+                                            <img width="32" height="32" src="https://img.icons8.com/nolan/64/key.png" alt="key" />                                <p>
+                                                Change Password
+                                            </p>
+                                        </button>
+                                    </Link>
                                 </div>
                                 <div className="db-manage-option">
                                     <button>

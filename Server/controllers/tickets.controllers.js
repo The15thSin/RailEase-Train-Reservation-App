@@ -17,7 +17,7 @@ const createTicket = async (req, res) => {
       pnr: generateRandomNumberPnr(),
       trainNo: req.body.trainNo,
       trainName: req.body.trainName,
-      userID: req.body.userID,
+      userEmail: req.body.userEmail,
       boardingPoint: req.body.srcStation,
       destination: req.body.destStation,
       travelDate: req.body.doj,
@@ -28,7 +28,7 @@ const createTicket = async (req, res) => {
     console.log("New Ticket created", newTicket)
     res.status(200).json({ ticketInfo: { newTicket }, status: "ok" });
   } catch (error) {
-    // console.error("Error creating ticket:", error);
+    console.error("Error creating ticket:", error);
     res.status(500).json({ error: "Failed to create ticket" });
   }
 };
@@ -48,16 +48,19 @@ const getTickets = async (req, res) => {
   }
 };
 
-// Get ticket by ID
-const getTicketById = async (req, res) => {
+// Get ticket by Email(User)
+const getTicketsByEmail = async (req, res) => {
   try {
-    const ticket = await Ticket.findById(req.params.id);
-    if (!ticket) {
-      return res.status(404).json({ error: "Ticket not found" });
+    const tickets = await Ticket.find({
+      userEmail: req.body.userEmail
+    });
+    if (!tickets) {
+      return res.status(404).json({ error: "No Tickets found" });
     }
-    res.status(200).json(ticket);
+    console.log(tickets);
+    res.status(200).json(tickets);
   } catch (error) {
-    console.error("Error fetching ticket by ID:", error);
+    console.error("Error fetching ticket by Email:", error);
     res.status(500).json({ error: "Failed to fetch ticket" });
   }
 };
@@ -79,6 +82,6 @@ const deleteTicketById = async (req, res) => {
 module.exports = {
   createTicket,
   getTickets,
-  getTicketById,
+  getTicketsByEmail,
   deleteTicketById
 }

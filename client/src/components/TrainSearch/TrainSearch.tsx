@@ -3,6 +3,7 @@ import './TrainSearch.css'
 import Select from 'react-select';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import config from '../../config';
 
 function TrainSearch() {
 
@@ -17,7 +18,7 @@ function TrainSearch() {
 
     const [stationsList, setStationsList] = useState([]);
     async function getStations() {
-        const res = await fetch('http://localhost:6969/api/stations');
+        const res = await fetch(`${config.BACKEND_URL}/api/stations`);
         const data = await res.json();
         return data;
     }
@@ -39,7 +40,7 @@ function TrainSearch() {
         let seatAvl = [];
         for (let i = 0; i < trains.length; i++) {
             console.log(trains[i].trainNo, doj);
-            const res = await fetch('http://localhost:6969/api/availability', {
+            const res = await fetch(`${config.BACKEND_URL}/api/availability`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -59,7 +60,7 @@ function TrainSearch() {
     async function findTrains(event: { preventDefault: () => void }) {
         event.preventDefault()
 
-        const response = await fetch('http://localhost:6969/api/trains', {
+        const response = await fetch(`${config.BACKEND_URL}/api/trains`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -1,5 +1,7 @@
 import { useState } from 'react'; // Import useState for handling form state
 import './ForgotPassword.css'; // Import CSS file
+import { useNavigate } from 'react-router-dom';
+import config from '../../config.ts'
 
 interface ForgotPasswordProps {
     // Optional: Define props if needed for password recovery logic
@@ -13,25 +15,32 @@ function ForgotPassword(_props: ForgotPasswordProps) {
     const [password, setPassword] = useState('');
     const [cnfmPassword, setCnfmPassword] = useState('')
     const [errorMessage, setErrorMessage] = useState(''); // For handling errors
+    const [successMessage, setSuccessMessage] = useState('')
+
+    const navigate = useNavigate();
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if (password!==cnfmPassword){
+        if (password !== cnfmPassword) {
             setErrorMessage('New Passwords do not match');
             return;
         }
         try {
-            const response = await fetch('/api/forgot-password', {
+            const response = await fetch(`${config.BACKEND_URL}/api/forgot-password`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, dob, securityQuestion, securityAnswer }),
+                body: JSON.stringify({ email, dob, securityQuestion, securityAnswer, password }),
             });
 
             if (response.ok) {
                 console.log('Password reset successful!');
+                setSuccessMessage('Password reset successful! You can now login if new password...');
+                setTimeout(() => {
+                    navigate('/login');
+                }, 1000);
             } else {
                 const errorData = await response.json();
-                setErrorMessage(errorData.message || 'An error occurred.'); // Handle specific errors
+                setErrorMessage(errorData.error || 'An error occurred.'); // Handle specific errors
             }
         } catch (error) {
             setErrorMessage('An unexpected error occurred.'); // Handle network errors
@@ -101,7 +110,7 @@ function ForgotPassword(_props: ForgotPasswordProps) {
                         id='password'
                         name='password'
                         value={password}
-                        onChange={(e) => {setPassword(e.target.value)}}
+                        onChange={(e) => { setPassword(e.target.value) }}
                         required
                     />
                 </div>
@@ -112,12 +121,13 @@ function ForgotPassword(_props: ForgotPasswordProps) {
                         id='confirmPassword'
                         name='confirmPassword'
                         value={cnfmPassword}
-                        onChange={(e) => {setCnfmPassword(e.target.value)}}
+                        onChange={(e) => { setCnfmPassword(e.target.value) }}
                         required
                     />
                 </div>
                 <button type='submit' className='fp-submit-button'>Recover Password</button>
                 {errorMessage && <p className='fp-error-message'>{errorMessage}</p>}
+                {successMessage && <p className='fp-success-message'>{successMessage}</p> }
             </form>
         </div>
     );

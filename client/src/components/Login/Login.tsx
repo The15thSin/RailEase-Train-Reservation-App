@@ -3,6 +3,7 @@ import { useState } from 'react'
 import './Login.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import config from '../../config.ts'
 
 function Login() {
 
@@ -12,8 +13,8 @@ function Login() {
 
     async function LoginUser(event: { preventDefault: () => void }) {
         event.preventDefault()
-        const response = await fetch('http://localhost:6969/api/login', {
-            method: 'POST',
+        const response = await fetch(`${config.BACKEND_URL}/api/login`, {
+        method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },

@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import ReactToPrint from 'react-to-print';
 import './Ticket.css'
 import { motion } from 'framer-motion';
+import config from '../../config.ts'
 
 interface Train {
     key: string;
@@ -34,8 +35,6 @@ function Ticket() {
 
     const [boardingStnName, setBoardingStnName] = useState("");
     const [destinationStnName, setDestinationStnName] = useState("");
-    // const pnr = 11037490
-    // console.log(pnr)
 
     const [ticket, setTicket] = useState({
         pnr: "",
@@ -56,7 +55,7 @@ function Ticket() {
         fare: 0
     });
     async function getTicketDetails() {
-        const res = await fetch("http://localhost:6969/api/getTickets", {
+        const res = await fetch(`${config.BACKEND_URL}/api/getTickets`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -68,7 +67,7 @@ function Ticket() {
     }
 
     async function getStnName(stationCode: string) {
-        const res = await fetch("http://localhost:6969/api/getStnName", {
+        const res = await fetch(`${config.BACKEND_URL}/api/getStnName`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -81,7 +80,7 @@ function Ticket() {
 
     async function getTrainDetails(trainNo: number) {
         // console.log("Train no: ", trainNo)
-        const res = await fetch("http://localhost:6969/api/getTrainInfoByNumber", {
+        const res = await fetch(`${config.BACKEND_URL}/api/getTrainInfoByNumber`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

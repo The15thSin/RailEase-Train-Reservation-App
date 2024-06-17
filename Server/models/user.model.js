@@ -8,7 +8,9 @@ const UserSchema = new mongoose.Schema(
         dob: {type:Date, required: true},
         sex: {type:String, required: true},
         phone: {type:Number, required: true},
-        pincode: {type:Number}
+        pincode: {type:Number},
+        securityQuestion: {type:String, required: true},
+        securityAnswer: {type:String, required: true},
     },
     { collection : 'users' }
 )
@@ -16,4 +18,3 @@ const UserSchema = new mongoose.Schema(
 const User = mongoose.model('User', UserSchema)
 
 module.exports = User
-
