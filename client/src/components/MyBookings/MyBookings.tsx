@@ -21,7 +21,7 @@ function MyBookings() {
     console.log(user.email)
 
     async function getTickets() {
-        const res = await fetch(`${config.BACKEND_URL}http://localhost:6969/api/getTicketsByEmail`, {
+        const res = await fetch(`${config.BACKEND_URL}/api/getTicketsByEmail`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
