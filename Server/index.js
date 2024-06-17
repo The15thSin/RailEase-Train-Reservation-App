@@ -6,7 +6,7 @@ const createRouter = require("./routes");
 require('dotenv').config()
 
 const app=express()
-const PORT=process.env.PORT
+const PORT=process.env.PORT || 8080
 
 //Middleware plugins
 app.use(cors())
