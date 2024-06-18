@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './MyBookings.css'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import config from '../../config.ts'
 import Loading from '../Loading/Loading.tsx';
 
@@ -57,13 +57,13 @@ function MyBookings() {
                 My Bookings
             </h1>
             <div className="mb-ticket-list-container">
-                {Array.isArray(tkts) && tkts.length > 0 ? (
-                    <ul className="mb-ticket-list">
-                        <h4>Upcoming Train Tickets</h4>
-                        {
-                            tkts
-                                .filter((ticket: any) => new Date(ticket.travelDate) >= new Date())
-                                .map((ticket: any) => (
+                {/* {Array.isArray(tkts) && tkts.length > 0 ? ( */}
+                <ul className="mb-ticket-list">
+                    <h4>Upcoming Train Tickets</h4>
+                    {
+                        tkts
+                            .filter((ticket: any) => new Date(ticket.travelDate) >= new Date())
+                            .map((ticket: any) => (
                                 <li key={ticket._id} className='mb-ticket-item'>
                                     <div className='mb-ticket-details'>
                                         <div>
@@ -103,36 +103,34 @@ function MyBookings() {
                                         </div>
                                     </div>
                                     <div className='mbt-actions-btns'>
-                                        <button className='mbt-print-btn' onClick={()=>{handlePrintClick(ticket.pnr)}}>
+                                        <button className='mbt-print-btn' onClick={() => { handlePrintClick(ticket.pnr) }}>
                                             Print Ticket
                                         </button>
-                                        <button className='mbt-cancel-btn'>
-                                            Cancel Ticket
-                                        </button>
+                                        <Link to="/cancel-ticket">
+                                            <button className='mbt-cancel-btn'>
+                                                Cancel Ticket
+                                            </button>
+                                        </Link>
                                     </div>
                                 </li>
                             ))
-                        }
-                        {
-                            tkts.filter((ticket: any) => new Date(ticket.travelDate) >= new Date()).length === 0 && 
-                            <div className='no-tickets'>
-                                <img width="100" height="100" src="https://img.icons8.com/ios/200/000000/nothing-found.png" alt="nothing-found"/>
-                                <p>
-                                    You don't have any past tickets yet.
-                                </p>
-                            </div>
-                        }
-                    </ul>
-                ) : (
-                    <p>You don't have any booked tickets yet.</p>
-                )}
-                {Array.isArray(tkts) && tkts.length > 0 ? (
-                    <ul className="mb-ticket-list">
-                        <h4>Past Train Tickets</h4>
-                        {
-                            tkts
-                                .filter((ticket: any) => new Date(ticket.travelDate) < new Date())
-                                .map((ticket: any) => (
+                    }
+                    {
+                        tkts.filter((ticket: any) => new Date(ticket.travelDate) >= new Date()).length === 0 &&
+                        <div className='no-tickets'>
+                            <img width="100" height="100" src="https://img.icons8.com/ios/200/000000/nothing-found.png" alt="nothing-found" />
+                            <p>
+                                You don't have any Upcoming tickets yet.
+                            </p>
+                        </div>
+                    }
+                </ul>
+                <ul className="mb-ticket-list">
+                    <h4>Past Train Tickets</h4>
+                    {
+                        tkts
+                            .filter((ticket: any) => new Date(ticket.travelDate) < new Date())
+                            .map((ticket: any) => (
                                 <li key={ticket._id} className='mb-ticket-item'>
                                     <div className='mb-ticket-details'>
                                         <div>
@@ -172,7 +170,7 @@ function MyBookings() {
                                         </div>
                                     </div>
                                     <div className='mbt-actions-btns'>
-                                        <button className='mbt-print-btn' onClick={()=>{handlePrintClick(ticket.pnr)}}>
+                                        <button className='mbt-print-btn' onClick={() => { handlePrintClick(ticket.pnr) }}>
                                             Print Ticket
                                         </button>
                                         {/* <button className='mbt-cancel-btn'>
@@ -181,20 +179,20 @@ function MyBookings() {
                                     </div>
                                 </li>
                             ))
-                        }
-                        {
-                            tkts.filter((ticket: any) => new Date(ticket.travelDate) < new Date()).length === 0 && 
-                            <div className='no-tickets'>
-                                <img width="100" height="100" src="https://img.icons8.com/ios/200/000000/nothing-found.png" alt="nothing-found"/>
-                                <p>
-                                    You don't have any past tickets yet.
-                                </p>
-                            </div>
-                        }
-                    </ul>
-                ) : (
+                    }
+                    {
+                        tkts.filter((ticket: any) => new Date(ticket.travelDate) < new Date()).length === 0 &&
+                        <div className='no-tickets'>
+                            <img width="100" height="100" src="https://img.icons8.com/ios/200/000000/nothing-found.png" alt="nothing-found" />
+                            <p>
+                                You don't have any Past tickets yet.
+                            </p>
+                        </div>
+                    }
+                </ul>
+                {/* ) : (
                     <p>You don't have any booked tickets yet.</p>
-                )}
+                )} */}
             </div>
         </div>
     )

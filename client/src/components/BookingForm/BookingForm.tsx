@@ -50,17 +50,20 @@ function BookingForm() {
         for (const passenger of passengers) {
             if (!passenger.name || !passenger.age || !passenger.gender) {
                 hasEmptyField = true;
+                setIsLoading(false);
                 break; // Stop iterating if an empty field is found
             }
         }
 
         if (hasEmptyField) {
             alert("Please fill in all required fields!");
+            setIsLoading(false);
             return;
         }
 
         if (passenger_count === 0) {
             alert("Please add a passenger");
+            setIsLoading(false);
             return;
         }
 

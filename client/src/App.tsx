@@ -14,6 +14,7 @@ import ForgotPassword from './components/ForgotPassword/ForgotPassword'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 import MyBookings from './components/MyBookings/MyBookings'
 import PNRStatus from './components/PNRStatus/PNRStatus'
+import CancelBooking from './components/CancelBooking/CancelBooking'
 
 function DashboardRoutes() {
   return (
@@ -85,6 +86,11 @@ function App() {
         <Route path='/check-pnr' element={
           <Suspense fallback={<Loading />}>
             <PNRStatus />
+          </Suspense>
+        } />
+        <Route path='/cancel-ticket' element={
+          <Suspense fallback={<Loading />}>
+            <CancelBooking />
           </Suspense>
         } />
         

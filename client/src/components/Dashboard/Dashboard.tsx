@@ -27,7 +27,7 @@ function Dashboard() {
         if (!token) {
             navigate('/login');
         }
-        else{
+        else {
             const user = decode(token!);
             if (user === undefined) {
                 localStorage.removeItem('token');
@@ -38,7 +38,7 @@ function Dashboard() {
 
     const user = decode(localStorage.getItem('token')!);
     let name = ""
-    if(user){
+    if (user) {
         name = user.name;
     }
 
@@ -84,12 +84,14 @@ function Dashboard() {
                     </div>
 
                     <div className="db-option">
-                        <button>
-                            <img className="db-opt-logo" width="64" height="64" src="https://img.icons8.com/nolan/64/cancel.png" alt="cancel" />
-                            <p>
-                                Cancel your Tickets
-                            </p>
-                        </button>
+                        <Link to="/cancel-ticket">
+                            <button>
+                                <img className="db-opt-logo" width="64" height="64" src="https://img.icons8.com/nolan/64/cancel.png" alt="cancel" />
+                                <p>
+                                    Cancel your Tickets
+                                </p>
+                            </button>
+                        </Link>
                     </div>
 
                     <div className="db-option">

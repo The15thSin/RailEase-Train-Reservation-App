@@ -14,6 +14,7 @@
 .mb-ticket-list {
     background-color: #ffffff67;
     margin: 20px auto;
+    min-width: 800px;
     width: min-content;
     padding: 20px;
     border: 1px solid #ddd;
@@ -21,7 +22,6 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     text-align: center;
     list-style: none;
-    min-width: 80%;
 }
 
 .mb-ticket-list h4{

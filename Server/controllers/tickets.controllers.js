@@ -3,10 +3,9 @@ const Ticket = require("../models/tickets.model");
 // Create a new ticket
 
 function generateRandomNumberPnr() {
-  // Ensure the number has leading zeros if needed
-  const pad = (num, size) => String(num).padStart(size, '0');
-  const randomNumber = Math.floor(Math.random() * 100000000); // Generate a random 9-digit number
-  return pad(randomNumber, 8); // Pad to 8 digits if necessary
+    const pad = (num, size) => String(num).padStart(size, '0');
+    const randomNumber = Math.floor(Math.random() * (99999999 - 10000000 + 1)) + 10000000;
+    return pad(randomNumber, 8); // Pad to 8 digits if necessary
 }
 
 const createTicket = async (req, res) => {
