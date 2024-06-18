@@ -1,0 +1,129 @@
+.status-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(255, 231, 185);
+    width: 40%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sc-train{
+    background-color: #fff;
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem 0.4rem;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    font-family: inherit;
+}
+
+.sc-schedule{
+    padding: 1rem;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sc-sch-src{
+    text-align: left;
+}
+
+.sc-sch-stn{
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.sc-sch-dest{
+    text-align: right;
+}
+
+.sc-sch-dist{
+    font-weight: 600;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.5rem;
+    color: #555555;
+}
+
+.sc-pnr-no{
+    margin-top: 1rem;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    /* text-align: center; */
+    padding: 1rem 0;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.sc-pnr-no img{
+    padding-left: 1rem;
+}
+.sc-pnr-no h4{
+    font-size: x-large;
+    padding-left: 1rem;
+}
+
+.sc-pnr-no p{
+    padding-top: 0.2rem;
+    padding-left: 1rem;
+}
+
+.sc-pass-det{
+    padding-bottom: 2rem;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sc-pdet-table{
+    width: 90%;
+    border-collapse: collapse;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+}
+
+.sct-head{
+    background-color: rgb(233, 233, 233);
+}
+
+.sc-pdet-table tr{
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+}
+
+.sct-head th{
+    padding: 0.8rem;
+}
+
+.sct-body td{
+    padding: 0.8rem;
+    text-align: center;
+}
+
+.sct-body td div{
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.3rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+
+
+
+
+

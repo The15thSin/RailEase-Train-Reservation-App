@@ -13,6 +13,7 @@ import './App.css'
 import ForgotPassword from './components/ForgotPassword/ForgotPassword'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 import MyBookings from './components/MyBookings/MyBookings'
+import PNRStatus from './components/PNRStatus/PNRStatus'
 
 function DashboardRoutes() {
   return (
@@ -79,6 +80,11 @@ function App() {
         <Route path='/my-bookings' element={
           <Suspense fallback={<Loading />}>
             <MyBookings />
+          </Suspense>
+        } />
+        <Route path='/check-pnr' element={
+          <Suspense fallback={<Loading />}>
+            <PNRStatus />
           </Suspense>
         } />
         

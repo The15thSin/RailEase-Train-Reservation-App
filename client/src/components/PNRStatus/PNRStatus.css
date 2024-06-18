@@ -1,0 +1,87 @@
+.pnr-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+.pnr-status {
+    width: 100%;
+    background-color: rgb(177, 232, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.pnr-form-container {
+    margin: 2rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 60%;
+}
+
+.pnr-form-container p {
+    padding: 1rem;
+    font-size: 2rem;
+}
+
+.pnr-form {
+    /* background-color: red; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.pnr-input {
+    padding: 0 2rem;
+    font-size: x-large;
+    width: 60%;
+    height: 80px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    /* border: 1px solid rgb(0, 128, 255); */
+    border: 1px solid rgb(255, 255, 255);
+    appearance: none;
+    font-weight: 900;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.pnr-input:focus {
+    border: 1px solid rgb(0, 128, 255);
+    outline: none;
+}
+
+.pnr-input::placeholder {
+    font-weight: 400;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.pnr-submit-btn {
+    height: 81px;
+    border: none;
+    background-color: rgb(0, 128, 255);
+    color: white;
+    width: max-content;
+    padding: 0 2rem;
+    font-size: x-large;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 1px solid rgb(0, 128, 255);
+    cursor: pointer;
+}
+
+.pnr-error {
+    color: red;
+    font-weight: 500;
+    position: absolute;
+    top: 38%;
+    left: 21.3%;
+}

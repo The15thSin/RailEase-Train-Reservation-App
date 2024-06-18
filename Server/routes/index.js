@@ -18,16 +18,6 @@ const createRouter = () => {
   router.use("/", seatsAvail);
   router.use("/", stationsRoutes);
 
-
-  // Protected routes
-  //   router.get("/profile", isAuthenticated, (req, res) => {
-  //     res.json({
-  //       status: "ok",
-  //       message: "You are authenticated",
-  //       user: req.user,
-  //     });
-  //   });
-
   return router;
 };
 

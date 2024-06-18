@@ -249,7 +249,8 @@ function TrainsList() {
                                     <p style={{ fontSize: "0.7rem", fontWeight: "500", marginTop: "4px" }}>
                                         {
                                             doj
-                                        }</p>
+                                        }
+                                    </p>
                                 </span>
                                 <span className='tl-trvl-time'>
                                     <p>
@@ -436,6 +437,13 @@ function TrainsList() {
                         </div>
                     ))
             }
+            {
+                trains.filter((train: { daysOfOp: any[]; }) => train.daysOfOp.includes(dayName)).length === 0?
+                <div className='tlh-no-trains'>No Trains Found running on this day...</div>:
+                <></>
+            }
+
+            <hr />
 
             <div className="other-days">
                 <h2>Trains running on Other days</h2>
@@ -517,6 +525,11 @@ function TrainsList() {
                             </span>
                         </div>
                     ))
+            }
+            {
+                trains.filter((train: { daysOfOp: any[]; }) => !train.daysOfOp.includes(dayName)).length === 0?
+                <div className='tlh-no-trains'>No Trains Found on other days...</div>:
+                <></>
             }
             <AnimatePresence mode='wait'>
                 {

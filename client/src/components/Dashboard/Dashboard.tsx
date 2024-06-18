@@ -62,23 +62,25 @@ function Dashboard() {
                 <span className="db-user-actions">
 
                     <div className="db-option">
-                        <button>
-                            <img className="db-opt-logo" width="64" height="64" src="https://img.icons8.com/nolan/64/search.png" alt="search" />
-                            <p>
-                                Check PNR
-                            </p>
-                        </button>
+                        <Link to="/check-pnr">
+                            <button>
+                                <img className="db-opt-logo" width="64" height="64" src="https://img.icons8.com/nolan/64/search.png" alt="search" />
+                                <p>
+                                    Check PNR
+                                </p>
+                            </button>
+                        </Link>
                     </div>
-                    <Link to='/my-bookings'>
-                        <div className="db-option">
+                    <div className="db-option">
+                        <Link to='/my-bookings'>
                             <button>
                                 <img className="db-opt-logo" width="64" height="64" src="https://img.icons8.com/nolan/64/event-accepted.png" alt="event-accepted" />
                                 <p>
                                     View your Bookings
                                 </p>
                             </button>
-                        </div>
-                    </Link>
+                        </Link>
+                    </div>
 
                     <div className="db-option">
                         <button>

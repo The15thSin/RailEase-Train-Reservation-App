@@ -51,13 +51,14 @@ const getTickets = async (req, res) => {
 // Get ticket by Email(User)
 const getTicketsByEmail = async (req, res) => {
   try {
+    console.log(req.body.userEmail);
     const tickets = await Ticket.find({
       userEmail: req.body.userEmail
     });
     if (!tickets) {
       return res.status(404).json({ error: "No Tickets found" });
     }
-    console.log(tickets);
+    console.log("Tickets : ", tickets);
     res.status(200).json(tickets);
   } catch (error) {
     console.error("Error fetching ticket by Email:", error);
@@ -65,7 +66,7 @@ const getTicketsByEmail = async (req, res) => {
   }
 };
 
-// Delete ticket
+// Cancel ticket
 const deleteTicketById = async (req, res) => {
   try {
     const deletedTicket = await Ticket.findByIdAndDelete(req.params.id);
@@ -79,9 +80,24 @@ const deleteTicketById = async (req, res) => {
   }
 };
 
+const getPNRStatus = async (req, res) => {
+  console.log("get pnr api hitted")
+  try {
+    const ticket = await Ticket.findOne({ pnr: req.body.pnr });
+    if (!ticket) {
+      return res.status(404).json({ error: "Ticket not found" });
+    }
+    res.status(200).json(ticket);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+  return res.status.json
+}
+
 module.exports = {
   createTicket,
   getTickets,
   getTicketsByEmail,
-  deleteTicketById
+  deleteTicketById,
+  getPNRStatus
 }

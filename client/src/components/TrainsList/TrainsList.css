@@ -256,6 +256,21 @@ h4 {
     gap: 0.2rem;
 }
 
+.tlh-no-trains{
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    margin: 2rem auto;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    width: 900px;
+    background-color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+}
+
 .view-train-details-window{
     position: absolute;
     width: calc(100vw - 16rem);
