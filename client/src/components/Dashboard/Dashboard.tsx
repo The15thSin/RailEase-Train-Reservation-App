@@ -27,19 +27,20 @@ function Dashboard() {
         if (!token) {
             navigate('/login');
         }
-        const user = decode(token!);
-        if (user === undefined) {
-            localStorage.removeItem('token');
-            navigate('/login');
+        else{
+            const user = decode(token!);
+            if (user === undefined) {
+                localStorage.removeItem('token');
+                navigate('/login');
+            }
         }
-    }, [navigate]);
-
-    // useEffect(() => {
-    //     console.log("manageProf:", manageProf); // Log state value for verification
-    // }, [manageProf]);
+    }, []);
 
     const user = decode(localStorage.getItem('token')!);
-    const { name } = user;
+    let name = ""
+    if(user){
+        name = user.name;
+    }
 
     return (
 

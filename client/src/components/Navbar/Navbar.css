@@ -27,6 +27,11 @@
     align-items: center;
 }
 
+.nav-logo{
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.377));
+    /* -webkit-filter: drop-shadow(5px 5px 5px #222); */
+}
+
 .login-button {
     background-color: rgb(37, 43, 194);
     width: 7rem;

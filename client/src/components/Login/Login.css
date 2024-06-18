@@ -1,8 +1,12 @@
+.Login{
+    padding-top: 3rem;
+}
+
 .login-container{
     width: 500px;
     height: 600px;
     margin: auto;
-    margin-top: 3rem;
+    /* margin-top: 3rem; */
     margin-bottom: 3rem;
     font-family: 'Raleway', sans-serif;
 

@@ -4,8 +4,11 @@ import Select from 'react-select';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import config from '../../config';
+import Loading from '../Loading/Loading';
 
 function TrainSearch() {
+
+    const [isLoading, setIsLoading] = useState(false);
 
     const [srcStation, setSrcStation] = useState('');
     const [destStation, setDestStation] = useState('');
@@ -59,7 +62,7 @@ function TrainSearch() {
 
     async function findTrains(event: { preventDefault: () => void }) {
         event.preventDefault()
-
+        setIsLoading(true)
         const response = await fetch(`${config.BACKEND_URL}/api/trains`, {
             method: 'POST',
             headers: {
@@ -83,6 +86,7 @@ function TrainSearch() {
         } else {
             setTrainsFound(0);
         }
+        setIsLoading(false);
     }
 
     return (
@@ -92,6 +96,7 @@ function TrainSearch() {
             exit={{ opacity: 0, y: "100%" }}
             transition={{ duration: 0.2 }}
             className='TrainSearch'>
+            {isLoading && <Loading />}
             <div className='ts-head'>
                 <h2>Search Trains</h2>
                 <form className='ts-form' onSubmit={findTrains}>

@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import './ChangePassword.css'
 import config from '../../config.ts'
+import Loading from '../Loading/Loading.tsx';
 
 function ChangePassword() {
-
+    const [isLoading, setIsLoading] = useState(false);
     const [email, setEmail] = useState('');
     const [dob, setDob] = useState('');
     const [oldPassword, setOldPassword] = useState('');
@@ -14,6 +15,7 @@ function ChangePassword() {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        setIsLoading(true)
         if(password!==cnfmPassword){
             setErrorMessage('New Passwords do not match!!!');
         }
@@ -30,10 +32,12 @@ function ChangePassword() {
         } catch (err) {
             console.log(err)
         }
+        setIsLoading(false)
     }
 
     return (
         <div className='change-password'>
+            {isLoading && <Loading />}
             <h1>Change Password</h1>
             <form onSubmit={handleSubmit}>
                 <div className='cp-form-group'>

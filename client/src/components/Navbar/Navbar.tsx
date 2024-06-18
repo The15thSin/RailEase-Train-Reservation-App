@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './Navbar.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { jwtDecode } from 'jwt-decode'
+import logo from "../../assets/img/RE_nav_logo.png"
 
 
 function Navbar() {
@@ -47,9 +48,7 @@ function Navbar() {
             <header>
                 <div className="nav">
                     <span>
-                        <img width="55" height="55"
-                            src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/128/252bc2/external-train-hotel-services-and-city-elements-flatart-icons-outline-flatarticons.png"
-                            alt="external-train-hotel-services-and-city-elements-flatart-icons-outline-flatarticons" />
+                        <img className="nav-logo" width="55" height="55" src={logo} alt="logo" />
                         <p>RailEase</p>
                     </span>
                     <span>

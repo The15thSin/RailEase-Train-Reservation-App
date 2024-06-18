@@ -4,12 +4,12 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import TrainInfo from '../TrainInfo/TrainInfo';
 import config from '../../config';
+import Loader from '../Loading/Loading';
 
 function TrainsList() {
+    const [isLoading, setIsLoading]= useState(true);
     const location = useLocation();
     const { trains, doj, srcStation, destStation, seatData } = location.state;
-    // console.log(trains)
-    // console.log(seatData)
 
     const dateString = doj;
     const date = new Date(dateString);
@@ -170,6 +170,7 @@ function TrainsList() {
             const data2 = await getStnName(destStation);
             setSrcStnName(data);
             setDestStnName(data2);
+            await setIsLoading(false);
         };
         fetchData();
     }, [srcStation, destStation])
@@ -181,6 +182,7 @@ function TrainsList() {
             exit={{ opacity: 0, y: "100%" }}
             transition={{ duration: 0.2 }}
         >
+            {isLoading && <Loader /> }
             <div className="TrainsList-container">
                 <h2 className='tlh-heading'> Trains running from
                     <p className='tlh-src-dest'>{srcStation}</p>
@@ -215,7 +217,7 @@ function TrainsList() {
                     }
                     ) => (
                         <div key={train.trainNo} className='TrainsList-container'>
-                            <p className='train-no-name-dot'>
+                            <span className='train-no-name-dot'>
                                 <p>
                                     {train.trainNo} - {train.trainName}
                                     <span className='train-type'>
@@ -226,8 +228,8 @@ function TrainsList() {
                                         View Details
                                     </button>
                                 </p>
-                                <p className='tl-doj'><p style={{ color: "rgb(0, 151, 0)", fontSize: "0.9rem" }}>Runs on: </p> {train.daysOfOp.join(', ')}</p>
-                            </p>
+                                <p className='tl-doj'><span style={{ color: "rgb(0, 151, 0)", fontSize: "0.9rem" }}>Runs on: </span> {train.daysOfOp.join(', ')}</p>
+                            </span>
                             <span className='tl-stn-time'>
                                 <span className='tl-stn-src'>
                                     <div>{srcStnName}</div>

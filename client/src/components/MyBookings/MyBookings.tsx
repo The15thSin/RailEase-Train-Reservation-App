@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import './MyBookings.css'
 import { useNavigate } from 'react-router-dom';
 import config from '../../config.ts'
+import Loading from '../Loading/Loading.tsx';
 
 function MyBookings() {
 
     const [tkts, setTkts] = useState([{}]);
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(true);
 
     function decode(token: string) {
         try {
@@ -29,10 +31,12 @@ function MyBookings() {
             body: JSON.stringify({ userEmail: user.email })
         })
         const tickets = await res.json();
+        await setIsLoading(false)
         return tickets;
     }
 
     useEffect(() => {
+        setIsLoading(true)
         const fetchData = async () => {
             const tkts = await getTickets();
             await setTkts(tkts);
@@ -48,6 +52,7 @@ function MyBookings() {
 
     return (
         <div className='my-bookings'>
+            {isLoading && <Loading />}
             <h1>
                 My Bookings
             </h1>

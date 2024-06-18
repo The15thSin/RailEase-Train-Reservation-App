@@ -2,12 +2,14 @@ import { useState } from 'react'; // Import useState for handling form state
 import './ForgotPassword.css'; // Import CSS file
 import { useNavigate } from 'react-router-dom';
 import config from '../../config.ts'
+import Loading from '../Loading/Loading.tsx';
 
 interface ForgotPasswordProps {
     // Optional: Define props if needed for password recovery logic
 }
 
 function ForgotPassword(_props: ForgotPasswordProps) {
+    const [isLoading, setIsLoading] = useState(false);
     const [email, setEmail] = useState('');
     const [dob, setDob] = useState(''); // Use appropriate date type (e.g., Date)
     const [securityQuestion, setSecurityQuestion] = useState('');
@@ -21,6 +23,7 @@ function ForgotPassword(_props: ForgotPasswordProps) {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        setIsLoading(true)
         if (password !== cnfmPassword) {
             setErrorMessage('New Passwords do not match');
             return;
@@ -45,10 +48,12 @@ function ForgotPassword(_props: ForgotPasswordProps) {
         } catch (error) {
             setErrorMessage('An unexpected error occurred.'); // Handle network errors
         }
+        setIsLoading(false)
     };
 
     return (
         <div className='forgot-password'>
+            {isLoading && <Loading />}
             <h1>Forgot Password</h1>
             <form onSubmit={handleSubmit}>
                 <div className='fp-form-group'>

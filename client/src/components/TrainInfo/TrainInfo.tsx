@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './TrainInfo.css'
 import config from '../../config.ts'
+import Loader from '../Loading/Loading.tsx';
 
 interface Train {
     key: string;
@@ -24,6 +25,7 @@ interface Train {
 }
 
 function TrainInfo(props: { trainNo: any }) {
+    const [isLoading, setIsLoading] = useState(true);
     async function getTrainData() {
         const res = await fetch(`${config.BACKEND_URL}/api/getTrainInfoByNumber`, {
             method: "POST",
@@ -75,6 +77,7 @@ function TrainInfo(props: { trainNo: any }) {
             const data2 = await getStnName(trainInfo?.stations[trainInfo?.stations.length - 1].stationCode || 'default');
             setSrcStnName(data);
             setDestStnName(data2);
+            await setIsLoading(false)
         };
         fetchData();
     }, [trainInfo])
@@ -117,6 +120,7 @@ function TrainInfo(props: { trainNo: any }) {
 
     return (
         <div className="TrainInfo">
+            {isLoading && <Loader />}
             <table className='ti-upper-table'>
                 <colgroup>
                     <col style={{ width: "15%" }} />

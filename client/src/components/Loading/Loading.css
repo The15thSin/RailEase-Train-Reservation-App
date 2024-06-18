@@ -1,7 +1,8 @@
 .loader-container {
-    /* background-color: rgb(15, 14, 40); */
-    background: linear-gradient(135deg, rgb(8, 11, 49), rgb(38, 12, 12),rgb(0, 0, 0));
-    position: absolute;
+    background: linear-gradient(135deg, rgba(8, 11, 49, 0.7), rgba(38, 12, 12,0.7),rgba(0, 0, 0,0.7));
+    position:fixed;
+    top: 0px;
+    right: 0px;
     height: 100%;
     width: 100%;
     z-index: 10000;

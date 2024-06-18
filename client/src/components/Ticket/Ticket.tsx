@@ -4,6 +4,7 @@ import ReactToPrint from 'react-to-print';
 import './Ticket.css'
 import { motion } from 'framer-motion';
 import config from '../../config.ts'
+import Loader from '../Loading/Loading.tsx';
 
 interface Train {
     key: string;
@@ -28,6 +29,7 @@ interface Train {
 
 function Ticket() {
     const tktRef = useRef<HTMLDivElement | null>(null);
+    const [isLoading, setIsLoading] = useState(false)
 
     const location = useLocation();
     const pnr = location.state.pnr;
@@ -129,6 +131,7 @@ function Ticket() {
 
     useEffect(() => {
         const fetchData = async () => {
+            setIsLoading(true)
             const tktData = await getTicketDetails();
             await setTicket(tktData[0]);
             // console.log(ticket);
@@ -139,6 +142,7 @@ function Ticket() {
             const trainData = await getTrainDetails(tktData[0].trainNo);
             await setTrainInfo(trainData);
             // console.log(trainData);
+            setIsLoading(false)
         };
         fetchData();
     }, []);
@@ -150,6 +154,7 @@ function Ticket() {
             exit={{ opacity: 0, y: "100%" }}
             transition={{ duration: 0.2 }}
             className='tkt-wrapper'>
+            {isLoading && <Loader />}
             <div ref={tktRef} className='tkt-container'>
                 <h2>
                     Ticket
@@ -162,7 +167,7 @@ function Ticket() {
                             <th>Class</th>
                         </tr>
                         <tr>
-                            <td style={{color: "blue", fontWeight: "bolder"}}>{ticket.pnr}</td>
+                            <td style={{ color: "blue", fontWeight: "bolder" }}>{ticket.pnr}</td>
                             <td>{ticket.trainNo} / {ticket.trainName} {trainInfo?.trainType}</td>
                             <td>{
                                 ticket.coach === "sl" ?
@@ -186,7 +191,7 @@ function Ticket() {
                         <col style={{ width: "20%" }} />
 
                     </colgroup>
-                    <tbody>    
+                    <tbody>
                         <tr>
                             <th>Boarding Point</th>
                             <th>Departure Point</th>
@@ -256,18 +261,18 @@ function Ticket() {
                                             Math.floor(((trainInfo?.stations
                                                 .filter((station) => station.stationCode === ticket.destination)
                                                 .map((station) => station.duration).reduce((a, b) => a + b) || 0)
-                                            -
-                                            (trainInfo?.stations
-                                                .filter((station) => station.stationCode === ticket.boardingPoint)
-                                                .map((station) => station.duration).reduce((a, b) => a + b) || 0))/60).toString().padStart(2,'0')
+                                                -
+                                                (trainInfo?.stations
+                                                    .filter((station) => station.stationCode === ticket.boardingPoint)
+                                                    .map((station) => station.duration).reduce((a, b) => a + b) || 0)) / 60).toString().padStart(2, '0')
                                             + ":" +
                                             (((trainInfo?.stations
                                                 .filter((station) => station.stationCode === ticket.destination)
                                                 .map((station) => station.duration).reduce((a, b) => a + b) || 0)
-                                            -
-                                            (trainInfo?.stations
-                                                .filter((station) => station.stationCode === ticket.boardingPoint)
-                                                .map((station) => station.duration).reduce((a, b) => a + b) || 0))%60).toString().padStart(2, "0")
+                                                -
+                                                (trainInfo?.stations
+                                                    .filter((station) => station.stationCode === ticket.boardingPoint)
+                                                    .map((station) => station.duration).reduce((a, b) => a + b) || 0)) % 60).toString().padStart(2, "0")
                                         } Hrs
                                     </span>
                                 </div>
@@ -305,11 +310,11 @@ function Ticket() {
                         </tbody>
                     </table>
                 </div>
-                <div style={{width: "100%"}}>
+                <div style={{ width: "100%" }}>
                     <table className='fare-table'>
                         <colgroup>
-                            <col style={{ width: "20%" }}/>
-                            <col style={{ width: "80%" }}/>
+                            <col style={{ width: "20%" }} />
+                            <col style={{ width: "80%" }} />
                         </colgroup>
                         <tr>
                             <th>Total Fare</th>

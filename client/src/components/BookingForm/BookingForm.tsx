@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import './BookingForm.css';
 import config from '../../config.ts'
+import Loader from '../Loading/Loading.tsx';
 
 interface Passenger {
     name: string;
@@ -14,6 +15,7 @@ interface Passenger {
 function BookingForm() {
     const location = useLocation();
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
     const { train, coach, doj, srcStation, destStation, fare } = location.state;
     // console.log(location.state)
     
@@ -23,7 +25,7 @@ function BookingForm() {
         age: Number(null),
         gender: "",
     };
-    
+
     const [passenger_count, setPassenger_count] = useState(0);
 
     const addPassenger = () => {
@@ -42,6 +44,7 @@ function BookingForm() {
 
     async function handleSubmit(e: { preventDefault: () => void; }): Promise<void> {
         e.preventDefault();
+        setIsLoading(true)
         // Check for empty fields
         let hasEmptyField = false;
         for (const passenger of passengers) {
@@ -103,6 +106,7 @@ function BookingForm() {
         } else {
             alert("Ticket booking failed");
         }
+        setIsLoading(false)
     };
 
     const fadeInUp = {
@@ -130,6 +134,7 @@ function BookingForm() {
             transition={{ duration: 0.2 }}
             className='booking-form-container'
         >
+            {isLoading && <Loader />}
             <div className="booking-form">
                 <h2>Booking Form</h2>
 

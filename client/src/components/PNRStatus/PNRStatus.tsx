@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import './PNRStatus.css';
 import config from '../../config';
 import StatusCard from './StatusCard/StatusCard';
+import Loading from '../Loading/Loading';
 
 function PNRStatus() {
-
+    const [isLoading, setIsLoading] = useState(false);
     type PNRStatus = {
         trainNo: number;
         trainName: string;
@@ -41,9 +42,11 @@ function PNRStatus() {
         }
         else if (inputValue < 10000000) {
             setPnrError('Please enter 8 digits.');
+            setIsLoading(false);
             return -1;
         } else if (inputValue > 99999999) {
             setPnrError('Maximum of 8 digits allowed.');
+            setIsLoading(false);
             return -1;
         } else {
             setPnrError('');
@@ -53,9 +56,9 @@ function PNRStatus() {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        setIsLoading(true);
         if (validateInput(pnr) !== -1) {
             console.log(pnr);
-            event.preventDefault();
             const res = await fetch(`${config.BACKEND_URL}/api/checkPNR`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -63,6 +66,7 @@ function PNRStatus() {
             })
             if (res.status === 404) {
                 setPnrError("PNR not found. Please enter correct PNR number.");
+                setIsLoading(false)
                 return
             }
             else {
@@ -138,21 +142,19 @@ function PNRStatus() {
                 distance: distance
             })
             await console.log(extraData)
+            await setIsLoading(false);
         }
-        fetchData()
-        
+        fetchData();
 
     }, [status])
 
-
-
     return (
         <div className='pnr-body'>
+            {isLoading && <Loading />}
             <div className="pnr-status">
                 <div className="pnr-form-container">
                     <p>PNR Status</p>
-                    <form className='pnr-form' onClick={handleSubmit}>
-                        {/* <label className='input-pnr-label' htmlFor="pnr">Enter PNR Number</label> */}
+                    <form className='pnr-form' onSubmit={handleSubmit}>
                         <input
                             className='pnr-input'
                             placeholder='Enter 8 digit PNR Number'
