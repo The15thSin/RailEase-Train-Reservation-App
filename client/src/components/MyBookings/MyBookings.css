@@ -115,6 +115,20 @@
     background-color: rgb(139, 0, 0);
 }
 
+.mbt-cancel-btn-disabled{
+    width: 130px;
+    padding: 0.7rem 0.5rem;
+    background-color: grey;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.441);
+    cursor: not-allowed;
+    /* font-weight: bold; */
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
 .mbt-print-btn{
     width: 130px;
     padding: 0.7rem 0.5rem;

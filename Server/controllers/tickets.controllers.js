@@ -66,15 +66,20 @@ const getTicketsByEmail = async (req, res) => {
 };
 
 // Cancel ticket
-const deleteTicketById = async (req, res) => {
+const cancelTicketByPNR = async (req, res) => {
   try {
-    const deletedTicket = await Ticket.findByIdAndDelete(req.params.id);
-    if (!deletedTicket) {
+    const ticket = await Ticket.findOne({
+      pnr : req.body.pnr
+    });
+    if (!ticket) {
       return res.status(404).json({ error: "Ticket not found" });
+    } else {
+      ticket.ticketStatus = "Cancelled";
     }
-    res.status(204).end();
+    await ticket.save();
+    return res.status(200).json({ message: "Ticket Cancelled Successfully" });
   } catch (error) {
-    console.error("Error deleting ticket by ID:", error);
+    console.error("Error deleting ticket by PNR:", error);
     res.status(500).json({ error: "Failed to delete ticket" });
   }
 };
@@ -97,6 +102,6 @@ module.exports = {
   createTicket,
   getTickets,
   getTicketsByEmail,
-  deleteTicketById,
+  cancelTicketByPNR,
   getPNRStatus
 }

@@ -122,6 +122,16 @@
     font-weight: 500;
 }
 
+.sct-status-confirmed{
+    font-weight: bold;
+    color: green;
+}
+
+.sct-status-cancelled{
+    font-weight: bold;
+    color: red;
+}
+
 
 
 

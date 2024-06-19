@@ -34,7 +34,7 @@ function StatusCard({ status, extras }: any) {
         // console.log(doj)
         let newDate = new Date(doj.getTime() + day * 24 * 60 * 60 * 1000)
         const month = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(newDate);
-        const date = newDate.getDate().toString().padStart(2, '0');        
+        const date = newDate.getDate().toString().padStart(2, '0');
         const weekDay = new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(newDate);
         let dateInfo = {
             weekDay: weekDay,
@@ -43,14 +43,14 @@ function StatusCard({ status, extras }: any) {
         }
         return (dateInfo);
     }
-    
+
     let srcDate = calcDate(new Date(status.travelDate), src.day)
     let destDate = calcDate(new Date(status.travelDate), dest.day)
     console.log(srcDate, destDate)
 
 
     return (
-        <motion.div 
+        <motion.div
             className='status-card'
             initial={{ opacity: 0, y: "-60%" }}
             animate={{ opacity: 1, y: "0" }}
@@ -115,23 +115,13 @@ function StatusCard({ status, extras }: any) {
                                             </div>
                                         </td>
                                         <td></td>
-                                        <td style={{ color: 'green', fontWeight: 'bold' }}>Confirmed</td>
+                                        <td className={status.ticketStatus === "Confirmed"? "sct-status-confirmed": "sct-status-cancelled"}>
+                                            {status.ticketStatus}
+                                        </td>
                                     </tr>
                                 )
                             })
                         }
-                        {/* <tr className='sct-body'>
-                            <td>
-                                <div>
-                                    <img width="16" height="16" src="https://img.icons8.com/fluency-systems-filled/48/ffa500/user.png" alt="user" />
-                                    <p>
-                                        Passenger Name
-                                    </p>
-                                </div>
-                            </td>
-                            <td></td>
-                            <td style={{ color: 'green', fontWeight: 'bold' }}>Confirmed</td>
-                        </tr> */}
                     </tbody>
                 </table>
             </div>

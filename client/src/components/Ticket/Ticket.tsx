@@ -54,7 +54,8 @@ function Ticket() {
                 _id: ""
             }
         ],
-        fare: 0
+        fare: 0,
+        ticketStatus: ""
     });
     async function getTicketDetails() {
         const res = await fetch(`${config.BACKEND_URL}/api/getTickets`, {
@@ -322,6 +323,10 @@ function Ticket() {
                             </th>
                         </tr>
                     </table>
+                </div>
+                <div className="tkt-status">
+                    <h3>Current Status : </h3>
+                    <p className={ticket.ticketStatus==="Confirmed"?"s-green":"s-red"}>{ticket.ticketStatus}</p>
                 </div>
             </div>
 

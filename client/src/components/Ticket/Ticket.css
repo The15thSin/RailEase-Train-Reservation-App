@@ -143,3 +143,29 @@
 .print-tkt:hover {
     background-color: #001a77;
 }
+
+.tkt-status{
+    width: 100%;
+    padding-top: 1rem;
+}
+
+.tkt-status h3{
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: #333;
+    border-bottom: 1px solid grey;
+}
+
+.tkt-status p{
+    font-weight: 500;
+    font-size: x-large;
+}
+
+.s-green{
+    color: green;
+}
+
+.s-red{
+    color: red;
+}

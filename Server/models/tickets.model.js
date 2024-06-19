@@ -62,7 +62,7 @@ const ticketSchema = new mongoose.Schema(
     },
     ticketStatus: {
       type: String,
-      enum: ["Confirmed", "RAC", "Waiting"],
+      enum: ["Confirmed", "Cancelled"],
       required: true,
       default: "Confirmed",
     },

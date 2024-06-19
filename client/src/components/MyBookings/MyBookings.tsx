@@ -50,6 +50,11 @@ function MyBookings() {
         navigate("/ticket", { state: { pnr: pnr } });
     }
 
+    const handleCancelAction = (pnr: string) => {
+        console.log(pnr);
+        navigate("/cancel-ticket", { state: { pnr: pnr } });
+    }
+
     return (
         <div className='my-bookings'>
             {isLoading && <Loading />}
@@ -57,7 +62,6 @@ function MyBookings() {
                 My Bookings
             </h1>
             <div className="mb-ticket-list-container">
-                {/* {Array.isArray(tkts) && tkts.length > 0 ? ( */}
                 <ul className="mb-ticket-list">
                     <h4>Upcoming Train Tickets</h4>
                     {
@@ -91,7 +95,12 @@ function MyBookings() {
                                         </div>
                                         <div className='mbt-ticket-status'>
                                             <p>Ticket Status:</p>
-                                            <p style={{ fontWeight: "bold", color: "green" }}>{ticket.ticketStatus}</p>
+                                            {
+                                                ticket.ticketStatus === "Confirmed" ?
+                                                    <p style={{ fontWeight: "bold", color: "green" }}>{ticket.ticketStatus}</p>
+                                                    :
+                                                    <p style={{ fontWeight: "bold", color: "red" }}>{ticket.ticketStatus}</p>
+                                            }
                                         </div>
                                         <div className='mbt-fare'>
                                             <p>Fare:</p>
@@ -106,11 +115,9 @@ function MyBookings() {
                                         <button className='mbt-print-btn' onClick={() => { handlePrintClick(ticket.pnr) }}>
                                             Print Ticket
                                         </button>
-                                        <Link to="/cancel-ticket">
-                                            <button className='mbt-cancel-btn'>
-                                                Cancel Ticket
-                                            </button>
-                                        </Link>
+                                        <button onClick={()=>{handleCancelAction(ticket.pnr)}} className={ticket.ticketStatus === "Confirmed" ? 'mbt-cancel-btn' : 'mbt-cancel-btn-disabled'}>
+                                            Cancel Ticket
+                                        </button>
                                     </div>
                                 </li>
                             ))
