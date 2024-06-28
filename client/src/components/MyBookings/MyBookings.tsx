@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './MyBookings.css'
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import config from '../../config.ts'
 import Loading from '../Loading/Loading.tsx';
 
