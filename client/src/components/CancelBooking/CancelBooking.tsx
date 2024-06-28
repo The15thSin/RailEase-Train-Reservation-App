@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import config from '../../config';
 import './CancelBooking.css'
-import { useLocation, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
+import Loading from '../Loading/Loading';
 
 function CancelBooking() {
 
@@ -44,11 +45,6 @@ function CancelBooking() {
         fetchData();
     }, [])
 
-    const handlePrintClick = (pnr: string) => {
-        console.log(pnr);
-        navigate("/ticket", { state: { pnr: pnr } });
-    }
-
     const handleCancelAction = (pnr: string) => {
         console.log(pnr);
         navigate("/cancel-ticket", { state: { pnr: pnr } });
@@ -56,6 +52,7 @@ function CancelBooking() {
 
     return (
         <div className='cancel-booking'>
+            {isLoading && <Loading />}
             <h1>Cancel booking</h1>
             <div className="mb-ticket-list-container">
                 <ul className="mb-ticket-list">

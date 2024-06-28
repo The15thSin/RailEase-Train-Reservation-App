@@ -242,10 +242,8 @@ function Register() {
                         <option value="What is your favourite food?">What is your favourite food?</option>
                         <option value="What is your favourite color?">What is your favourite color?</option>
                         <option value="What is your favourite movie?">What is your favourite movie?</option>
-                        <option value="Who is your favourite pornstar?">Who is your favourite pornstar?</option>
-                        <option value="What position you like to fuck in/ being fucked?">What position you like to fuck in/being fucked?</option>
-                        <option value="How many times did you fucked?">How many times did you fucked?</option>
-                        <option value="What is your pp length?">What is your pp length?</option>
+                        <option value="Who is your favourite actor/actress?">Who is your favourite actor/actress?</option>
+                        <option value="What is your favourite Tourist Place?">What is your favourite Tourist Place?</option>
                     </select>
                     <label className='rf-label' htmlFor="seq-answer">Enter your answer : <span style={{ color: 'red' }}>*</span></label>
                     <input
