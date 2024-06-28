@@ -165,7 +165,13 @@ function MyBookings() {
                                         </div>
                                         <div className='mbt-ticket-status'>
                                             <p>Ticket Status:</p>
-                                            <p style={{ fontWeight: "bold", color: "green" }}>{ticket.ticketStatus}</p>
+                                            <p>Ticket Status:</p>
+                                            {
+                                                ticket.ticketStatus === "Confirmed" ?
+                                                    <p style={{ fontWeight: "bold", color: "green" }}>{ticket.ticketStatus}</p>
+                                                    :
+                                                    <p style={{ fontWeight: "bold", color: "red" }}>{ticket.ticketStatus}</p>
+                                            }
                                         </div>
                                         <div className='mbt-fare'>
                                             <p>Fare:</p>
@@ -180,9 +186,6 @@ function MyBookings() {
                                         <button className='mbt-print-btn' onClick={() => { handlePrintClick(ticket.pnr) }}>
                                             Print Ticket
                                         </button>
-                                        {/* <button className='mbt-cancel-btn'>
-                                            Cancel Ticket
-                                        </button> */}
                                     </div>
                                 </li>
                             ))
