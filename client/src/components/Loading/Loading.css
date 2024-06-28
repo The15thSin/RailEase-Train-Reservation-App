@@ -1,6 +1,6 @@
 .loader-container {
     background: linear-gradient(135deg, rgba(8, 11, 49, 0.7), rgba(38, 12, 12,0.7),rgba(0, 0, 0,0.7));
-    position:fixed;
+    position: fixed;
     top: 0px;
     right: 0px;
     height: 100%;

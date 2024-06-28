@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
 import config from '../../config';
+import { useNavigate } from 'react-router-dom';
 import './CancelBooking.css'
-import {  useNavigate } from 'react-router-dom';
 import Loading from '../Loading/Loading';
+import { motion } from 'framer-motion';
 
 function CancelBooking() {
 
-    const [tkts, setTkts] = useState([{}]);
-    const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
+    const [tkts, setTkts] = useState([{}]);
+    const [pnr, setPnr] = useState(0);
+    const [cancelTkt, setCancelTkt] = useState(false);
+    const navigate = useNavigate();
 
     function decode(token: string) {
         try {
@@ -45,14 +48,57 @@ function CancelBooking() {
         fetchData();
     }, [])
 
-    const handleCancelAction = (pnr: string) => {
+    const handleCancelAction = async () => {
+        setIsLoading(true);
         console.log(pnr);
-        navigate("/cancel-ticket", { state: { pnr: pnr } });
+        async function cancelTkt() {
+            const res = await fetch(`${config.BACKEND_URL}/api/cancel-ticket`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ pnr: pnr })
+            })
+            const data = await res.json();
+            await console.log(data);
+            await setCancelTkt(false);
+            navigate('/my-bookings');
+        }
+        await cancelTkt();
+        setIsLoading(false);
     }
 
     return (
-        <div className='cancel-booking'>
+        <motion.div 
+            className='cancel-booking'
+            initial={{ opacity: 0, y: "-100%" }}
+            animate={{ opacity: 1, y: "0" }}
+            exit={{ opacity: 0, y: "-100%" }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+        >
             {isLoading && <Loading />}
+            {
+                cancelTkt &&
+                <div className='cancel-confirmation-container'>
+                    <div className='cancel-dialogue-box'>
+                        <h1>
+                            Cancel Reservation ?
+                        </h1>
+                        <img width="96" height="96" src="https://img.icons8.com/fluency/96/break.png" alt="break"/>
+                        <p>
+                            Are you sure you want to cancel this ticket. This process is not reversible.
+                        </p>
+                        <span className='cancel-dialogue-box-btns'>
+                            <button className='cb-no' onClick={()=>{setCancelTkt(false)}}>
+                                NO, GO BACK
+                            </button>
+                            <button className='cb-yes' onClick={()=>{handleCancelAction()}}>
+                                YES, CONTINUE
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            }
             <h1>Cancel booking</h1>
             <div className="mb-ticket-list-container">
                 <ul className="mb-ticket-list">
@@ -105,7 +151,7 @@ function CancelBooking() {
                                         </div>
                                     </div>
                                     <div className='mbt-actions-btns'>
-                                        <button onClick={()=>{handleCancelAction(ticket.pnr)}} className={ticket.ticketStatus === "Confirmed" ? 'mbt-cancel-btn' : 'mbt-cancel-btn-disabled'}>
+                                        <button onClick={() => { setCancelTkt(true); setPnr(ticket.pnr); }} className={ticket.ticketStatus === "Confirmed" ? 'mbt-cancel-btn' : 'mbt-cancel-btn-disabled'}>
                                             Cancel Ticket
                                         </button>
                                     </div>
@@ -123,7 +169,7 @@ function CancelBooking() {
                     }
                 </ul>
             </div>
-        </div>
+        </motion.div>
     )
 }
 
