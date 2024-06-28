@@ -165,7 +165,6 @@ function MyBookings() {
                                         </div>
                                         <div className='mbt-ticket-status'>
                                             <p>Ticket Status:</p>
-                                            <p>Ticket Status:</p>
                                             {
                                                 ticket.ticketStatus === "Confirmed" ?
                                                     <p style={{ fontWeight: "bold", color: "green" }}>{ticket.ticketStatus}</p>
