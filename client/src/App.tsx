@@ -15,6 +15,7 @@ import ChangePassword from './components/ChangePassword/ChangePassword'
 import MyBookings from './components/MyBookings/MyBookings'
 import PNRStatus from './components/PNRStatus/PNRStatus'
 import CancelBooking from './components/CancelBooking/CancelBooking'
+import Footer from './components/Footer/Footer'
 
 function DashboardRoutes() {
   return (
@@ -95,6 +96,7 @@ function App() {
         } />
         
       </Routes>
+      <Footer />
     </BrowserRouter>
   )
 }
