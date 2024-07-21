@@ -7,6 +7,7 @@
 }
 
 .dashboard-container {
+    min-height: 80vh;
     padding: 1rem;
     /* background-color: cyan; */
     display: flex;

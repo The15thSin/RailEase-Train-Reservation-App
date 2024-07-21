@@ -7,6 +7,7 @@ footer{
     background-position: center;
     color: whitesmoke;
     z-index: 1;
+    position:relative;
 }
 
 .footer-container{
@@ -120,6 +121,10 @@ footer{
     gap: 1rem;
 }
 
+.fp-links{
+    cursor: pointer;
+}
+
 .footer-copyright{
     display: flex;
     padding-top: 1rem;
@@ -133,6 +138,7 @@ footer{
     display: inline-block;
     color: white;
     transition: 0.5s ease-in-out;
+    cursor:pointer;
 }
 
 .footer-heart:hover{

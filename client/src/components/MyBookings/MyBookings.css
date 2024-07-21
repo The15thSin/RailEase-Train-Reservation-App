@@ -5,6 +5,7 @@
     flex-direction: column;
     padding: 2rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    z-index: 100;
 }
 
 .mb-ticket-list-container {
