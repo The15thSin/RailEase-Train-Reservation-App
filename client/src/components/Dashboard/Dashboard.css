@@ -129,27 +129,32 @@
         flex-direction: column;
     }
 
-    .db-option button {
+    /* .db-option button {
         width: 100px; /* Adjust button size for smaller screens */
-        height: 100px;
-    }
+        /* height: 100px; */
+    /* }  */
 }
 
 @media screen and (max-width: 800px) {
     .dashboard {
         font-size: 3vw;
     }
-    /* .db-seperate{
-        width: 0vw;
+    .db-seperate{
+        width: 83vw;
         height: 0;
-    } */
+    }
 }
 
 @media (max-width: 480px) {
-    .db-option button {
+    /* .db-option button {
         width: 80px; /* Further adjust button size for very small screens */
-        height: 80px;
-        font-size: small; /* Adjust font size */
+        /* height: 80px; */
+        /* font-size: small; Adjust font size */
+    /* }  */
+    .db-option button {
+        font-size: x-small;
+        height: 43vw;
+        width: 35vw;
     }
 
     .db-manage-option button {
