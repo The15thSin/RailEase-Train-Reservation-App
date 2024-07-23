@@ -1,17 +1,21 @@
 * {
   margin: 0;
   padding: 0;
+  scrollbar-width: none;
+  overflow: auto;
 }
 
 a {
   text-decoration: none;
 }
 
+
 body {
   margin: 0;
   padding: 0;
   background: #eaeaea;
   color: black;
+  overflow-x: hidden;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 

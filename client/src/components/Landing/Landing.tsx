@@ -89,6 +89,9 @@ function Landing() {
                     </div>
                 </div>
             </motion.div>
+            <div className='extras'>
+                
+            </div>
         </>
     )
 }

@@ -1,0 +1,208 @@
+footer{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: auto;
+    background-image: url("../../assets/img/footer_bg.jpg");
+    background-size: cover;
+    border-top: 2px solid rgb(0, 0, 0);
+    background-position: center;
+    color: whitesmoke;
+    z-index: 1;
+    position:relative;
+}
+
+.footer-container{
+    backdrop-filter: blur(15px);
+    background-color: rgba(0, 3, 32, 0.777);
+    padding: 2rem;
+}
+
+.Footer{
+    height: max-content;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.f-logo-about{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 30vw;
+    gap: 2rem;
+}
+
+.f-logo-about span{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: 1rem;
+}
+
+.f-logo-about span img{
+    height: 100px;
+    width: 100px;
+    filter: drop-shadow(1px 1px 10px rgba(255, 255, 255, 0.312));
+}
+
+.f-logo-about span .f-head{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 5rem;
+    font-weight: 500;
+}
+
+.f-team{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    width: 40vw;
+}
+
+.f-t-cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.f-t-card{
+    background-color: #0000004e;
+    border: 1.5px solid rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 0.5rem;
+    width: 270px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.7rem;
+    transition: 0.3s all ease-in-out;
+}
+
+.ft-pfp{
+    border: 1px solid white;
+    border-radius: 50%;
+    padding: 2px;
+    object-fit: cover;
+    object-position: top;
+}
+
+.f-t-card:hover{
+    background-color: #ffffff20;
+    cursor: pointer;
+}
+
+.f-t-card .ft-name-desg{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.f-t-card .ft-name-desg h4{
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.f-t-card .ft-name-desg p{
+    font-size: 0.9rem;
+    color: #ffffffd3;
+}
+.f-t-card .ft-icons{
+    display: flex;
+}
+
+.f-project-links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.fp-links{
+    cursor: pointer;
+}
+
+.footer-copyright{
+    display: flex;
+    padding-top: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-heart{
+    display: inline-block;
+    color: white;
+    transition: 0.5s ease-in-out;
+    cursor:pointer;
+}
+
+.footer-heart:hover{
+    color: red;
+    animation: heart 2s linear infinite;
+}
+
+@keyframes heart{
+    0%{
+        transform: scale(1);
+    }
+    10%{
+        transform: scale(1);
+    }
+    20%{
+        transform: scale(1);
+    }
+    30%{
+        transform: scale(1.8);
+    }
+    40%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1);
+    }
+    60%{
+        transform: scale(1);
+    }
+    70%{
+        transform: scale(1.8);
+    }
+    80%{
+        transform: scale(1);
+    }
+    90%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+@media screen and (max-width: 840px) {
+
+    .f-logo-about {
+        width: 95vw;
+    }
+
+    .f-team {
+        width: 70vw;
+    }
+
+    .f-logo-about span img {
+        height: 70px;
+        width: 70px;
+    }
+    .f-logo-about span .f-head {
+        font-size: 3.5rem;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .footer-container{
+        min-height: 107vh;
+    }
+}

@@ -21,7 +21,7 @@ mongoose.connect(process.env.MONGO_URI_S)
 //routes
 const router = createRouter();
 app.use("/api", router);
-app.get("/", (req, res) => res.send("Welcome to the backend of Railway-Reservation-System"));
+app.get("/", (req, res) => res.send("Welcome to the backend of RailEase Railway-Reservation-System"));
 
 //server execution
 app.listen(PORT, ()=>{
