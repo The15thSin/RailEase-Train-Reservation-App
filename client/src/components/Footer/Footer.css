@@ -206,6 +206,15 @@ footer{
         min-height: 107vh;
     }
     .f-team{
-        width: 80vw;
+        width: 90vw;
+    }
+    .f-t-card{
+        width: 250px;
+    }
+    .f-t-card .ft-name-desg h4 {
+        font-size: 1rem;
+    }
+    .f-t-card .ft-name-desg p {
+        font-size: 0.7rem;
     }
 }
