@@ -99,15 +99,25 @@
 }
 
 /* Media Queries */
+@media (max-width: 1300px) {
+    .db-seperate{
+        width: 0vw;
+        height: 0;
+    }
+}
 @media (max-width: 1024px) {
     .db-user-actions {
-        grid-template-columns: repeat(1, 1fr); /* Single column for smaller screens */
+        grid-template-columns: repeat(2, 1fr); /* Single column for smaller screens */
     }
 
     .db-option button {
-        width: 100px; /* Adjust button size for smaller screens */
-        height: 100px;
+        width: 25vw; /* Adjust button size for smaller screens */
+        height: 25vw;
     }
+    /* .db-seperate{
+        width: 0;
+        height: 0;
+    } */
 }
 
 @media (max-width: 768px) {
@@ -125,6 +135,16 @@
     }
 }
 
+@media screen and (max-width: 800px) {
+    .dashboard {
+        font-size: 3vw;
+    }
+    /* .db-seperate{
+        width: 0vw;
+        height: 0;
+    } */
+}
+
 @media (max-width: 480px) {
     .db-option button {
         width: 80px; /* Further adjust button size for very small screens */
@@ -135,5 +155,9 @@
     .db-manage-option button {
         width: 200px; /* Adjust manage option button size */
         font-size: 1rem;
+    }
+    .db-seperate{
+        width: 83vw;
+        height: 0;
     }
 }

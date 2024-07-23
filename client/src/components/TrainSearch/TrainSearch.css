@@ -114,3 +114,9 @@
     padding-top: 1rem;
     color: red;
 }
+
+@media screen and (max-width: 600px) {
+    .TrainSearch{
+        width: 80vw;
+    }
+}
