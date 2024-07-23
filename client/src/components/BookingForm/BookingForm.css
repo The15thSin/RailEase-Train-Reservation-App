@@ -199,12 +199,3 @@
     font-weight: bold;
 }
 
-
-@media (max-width: 570px) {
-    .detail-label{
-        width: 40vw;
-    }
-    .detail-value {
-        width: calc(100% - 40vw);
-    }
-}

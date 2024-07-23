@@ -86,3 +86,38 @@
     top: 38%;
     left: 21.3%;
 }
+
+@media (max-width: 1024px) {
+
+    .pnr-form-container{
+        width: 80vw;
+    }
+    
+    
+}
+@media (max-width: 700px) {
+    .pnr-form-container{
+        width: 85vw;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .pnr-form-container{
+        width: 100vw;
+    }
+    .pnr-form{
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+    .pnr-input{
+        width: 80%;
+        border-radius: 10px;
+        font-size: 6.5vw;
+    }
+    .pnr-submit-btn{
+        width: 70%;
+        font-size: 6.5vw;
+        border-radius: 10px;
+    }
+}

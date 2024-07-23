@@ -135,6 +135,9 @@
         margin: 0 2rem 0 0.7rem;
         gap: 0.8rem;
     }
+    .nav:nth-child(1) {
+        margin: 0;
+    }
 
     .nav span img {
         width: 15px;
