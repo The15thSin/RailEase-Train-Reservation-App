@@ -1,3 +1,27 @@
+
+html, body{
+    scroll-behavior: smooth;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
 .content {
     min-height: 460px;
     height: auto;
@@ -135,23 +159,24 @@
 }
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 840px) {
+    
     .main{
         background-size: cover;
         height:max-content;
-        
+        overflow-x: hidden;
         flex-direction: column;
-        padding: 55px;
+        padding: 55px 0;
     }
     .main-head{
-        /* border: 2px solid red; */
-        width: 100vw;
+        width: 90vw;
+        margin-left: 30px;
     }
     .main-head-p1{
-        font-size: 20px;
+        font-size: 3.5vw;
     }
     .main-head-p2{
-        font-size: 20px;
+        font-size: 3.5vw;
     }
     .main-head img{
         width: 150px;
@@ -160,11 +185,13 @@
     .rana-img-tag{
         font-size: 20px;
         font-weight: 500;
+        align-self: center;
     }
 
     .main-features{
-        width: 110vw;
-        margin: .5rem;
+        width: 95vw;
+        margin: 1rem;
+        border-width: 1px;
     }
     .mf-head{
         font-size: 15px;
@@ -172,29 +199,20 @@
     }
 
     .mf-grid{
-        display: grid;
-        grid-template-columns: 50% 50%;    
-        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        font-size: 12rem;
     }
     .mf-grid-item{
-        padding: 3px;
-        margin: 3px;
-        flex-direction: column;
-        gap: 0rem;
-    }
-    .mf-grid-item span{
-        gap: 0px;
-        position: relative;
+        width: 100%;
     }
     .mf-grid-item span img{
-        position: absolute;
-        top: 10px;
-        right: -78px;
-        width: 30px;
-        height: 30px;
+        display: none;
     }
-    .mf-grid-item span h4{
-        width: 8.75rem;
-        font-size: 14px;
+    .mf-grid-item span h4, .mf-grid-item span p {
+        font-size: 1rem;
     }
 }
