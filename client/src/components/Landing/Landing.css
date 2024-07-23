@@ -110,6 +110,10 @@
     gap: 5px;
 }
 
+.mf-grid-item span:nth-child(2) {
+    width: 80%;
+}
+
 .mf-grid-item span p {
     font-size: 0.9rem;
     color: rgb(56, 56, 56);
@@ -198,6 +202,10 @@
         font-size: 1.2rem;
         padding: 0.5rem;
     }
+
+    .mf-grid-item span:nth-child(2) {
+        width: 80%;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -238,6 +246,10 @@
         padding: 1rem;
     }
 
+    .mf-grid-item span:nth-child(2) {
+        width: 80%;
+    }
+    
     .mf-grid-item span h4, .mf-grid-item span p {
         font-size: 0.9rem;
     }
