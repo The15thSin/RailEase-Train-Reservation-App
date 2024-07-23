@@ -195,3 +195,18 @@
     border: 2px solid #ff4444;
     color: #ff4444;
 }
+
+
+@media screen and (max-width: 500px){
+    .Register-form-container{
+        width: 90vw;
+    }
+    .Register-text-heading{
+        height: 6rem;
+        font-size: 1.8rem;
+    }
+    .go-back-reg {
+        right: 50vw;
+        top: -1vw;
+    }
+}
