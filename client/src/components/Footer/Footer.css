@@ -217,4 +217,8 @@ footer{
     .f-t-card .ft-name-desg p {
         font-size: 0.7rem;
     }
+
+    .footer-copyright p{
+        font-size: 0.77rem;
+    }
 }
