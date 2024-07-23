@@ -153,6 +153,7 @@
 
 @media (max-width: 440px) {
     .go-to-dashboard{
-        font-size: 13px;
+        font-size: 12px;
+        padding: 10px 0;
     }
 }
