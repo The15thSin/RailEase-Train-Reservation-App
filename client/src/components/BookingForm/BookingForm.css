@@ -198,3 +198,22 @@
     color:red;
     font-weight: bold;
 }
+
+
+@media (max-width: 970px) {
+    .booking-form {
+        width: 85vw;
+    }
+}
+@media (max-width: 570px) {
+    .detail-label{
+        width: 40vw;
+    }
+    .booking-detail{
+        /* justify-content: space-evenly; */
+        width: 85vw;
+    }
+    .detail-value {
+        width: calc(100% - 40vw);
+    }
+}
