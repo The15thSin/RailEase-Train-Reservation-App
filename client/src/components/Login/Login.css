@@ -139,6 +139,7 @@
     .login-container{
         width: 90vw;
         height: 130vw;
+        /* margin-top: 0; */
     }
     .login-head {
         height: 6rem;
@@ -147,5 +148,12 @@
     .go-back {
         right: 50vw;
         top: -1vw;
+    }
+    .login-form form {
+        width: 100%;
+        padding: 5px;
+    }
+    .login-form form button {
+        width: 60%;
     }
 }
